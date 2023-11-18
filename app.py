@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
-
+from src.Chip import Chip
+import json
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'  # SQLite database file
@@ -12,6 +13,12 @@ class User(db.Model):
     name = db.Column(db.String(100)) # Initialize column in database for name
     password = db.Column(db.String(100)) # Initialize column in databasefor password
 
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    # Define columns for attribute list and information list (as JSON)
+    attribute_list = db.Column(db.JSON)
+    information_list = db.Column(db.JSON)
+    
 with app.app_context():
     # Home route
     @app.route('/')
@@ -84,6 +91,22 @@ with app.app_context():
     @app.route('/chipviewer')
     def chipviewer():
         return render_template("chip-viewer.html")
+    
+    @app.route('/addChip', methods=['POST'])
+    def add_chip():
+        if request.method == 'POST':
+            name = request.form['name']
+            type = request.form['type']
+            # Process the keys and values as needed (e.g., store in database)
+            # Example: Printing keys and values
+    
+            print("Name:", request.form['name'])
+            print("Type:", request.form['type'])
+     
+    
+    @app.route('/createcontact')
+    def createchip():
+        return render_template('createcontact.html')
     
     if __name__ == '__main__':
         db.create_all()  # Create tables based on defined models
