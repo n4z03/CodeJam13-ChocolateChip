@@ -1,4 +1,5 @@
-import re
+# another class can be defined to represent an ordered dictionary
+# instead of the current scuffed list pair which doubles the amount of code we need
 class Chip:
     def __init__(self, first_name, last_name, phone = None, social = None, email = None):
         self.attribute_list = []
@@ -56,9 +57,4 @@ class Chip:
 
         print("Maximum attempts reached. Please try again later.")
         """
-        
-f = Chip("andy", "bradly")
-f.addContactInfo()
-
-print(f.phone)
-# name, contact: phone number, social media, linked-in, email, type: friend, co-worker, etc etc, 
+        pass
