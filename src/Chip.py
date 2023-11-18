@@ -1,7 +1,12 @@
 # another class can be defined to represent an ordered dictionary
 # instead of the current scuffed list pair which doubles the amount of code we need
+from enum import Enum, auto
+class ConnectionType(Enum):
+    PERSONAL = auto()
+    PROFESSIONAL = auto()
+
 class Chip:
-    def __init__(self, first_name, last_name, phone = None, social = None, email = None):
+    def __init__(self, first_name, last_name, phone, social, email, connection_type):
         self.attribute_list = []
         self.information_list = []
 
@@ -19,6 +24,8 @@ class Chip:
         
         self.attribute_list.append("Email")
         self.information_list.append(email)
+
+        self.connection_type = connection_type
 
     def add_attribute(self, attribute):
         self.attribute_list.append(attribute)
