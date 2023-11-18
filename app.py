@@ -31,6 +31,10 @@ with app.app_context():
     def get_users():
         users = User.query.all()
         return render_template('user.html', users=users)
+    
+    @app.route('/chip-viewer')
+    def chip_viewer():
+        return render_template('chip-viewer.html')
 
     if __name__ == '__main__':
         db.create_all()  # Create tables based on defined models
