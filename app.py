@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from src.Chip import Chip
 import json
 app = Flask(__name__)
 
@@ -15,9 +14,9 @@ class User(db.Model):
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    # Define columns for attribute list and information list (as JSON)
-    attribute_list = db.Column(db.JSON)
-    information_list = db.Column(db.JSON)
+    name = db.Column(db.String(100))
+    type = db.Column(db.String(100))
+    email = db.Column(db.String(100))
     
 with app.app_context():
     # Home route
@@ -90,19 +89,26 @@ with app.app_context():
     
     @app.route('/chipviewer')
     def chipviewer():
-        return render_template("chip-viewer.html")
-    
+        contacts = Contact.query.all()
+        return render_template("chip-viewer.html", contacts = contacts)
+  
     @app.route('/addChip', methods=['POST'])
     def add_chip():
         if request.method == 'POST':
             name = request.form['name']
             type = request.form['type']
+            email = request.form['email']
             # Process the keys and values as needed (e.g., store in database)
             # Example: Printing keys and values
-    
-            print("Name:", request.form['name'])
-            print("Type:", request.form['type'])
+            contact = Contact(name = name, type = type, email = email)
+            db.session.add(contact)
+            db.session.commit()
+           
+        return redirect('chipviewer')
      
+    @app.route('/chips')
+    def chips():
+        return render_template('chips.html')
     
     @app.route('/createcontact')
     def createchip():
