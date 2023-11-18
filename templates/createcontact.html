@@ -1,63 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Chocolate Chip</title>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+    <title>create contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <style>
     body {
+        min-height: 100vh;
+        background: #f6dcc2;
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        justify-content: flex-start;
         font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #f6dcc2;
-        background-color: #611c1b;
-        margin: 0;
-        padding: 0;
+        margin: 20px; 
     }
-
-    .logo {
-        width: 7%;
-        height: auto;
-        float: left;
-        padding-right: 30px;
-    }
-  
-    .title {
-        color: #f4ba80;
-        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 13px;
-        float: left;
+    
+    a {
+        text-decoration: none; 
+        color: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
     }
 
     .header {
-        padding-top: 20px;
-        padding-left: 20px;
-        padding-right: 20px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background: #f6dcc2;
+    }
+    
+    .header img {
+        height: 45px;
+        margin-right: 10px;
+    }
+    .website-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #902b29;
+    }
+    .container {
+      width: 30%;
+      background: #fff;
+      border-radius: 6px;
+      padding: 20px 60px 20px 40px;
+      box-shadow: 0 5px 10px rgba(99, 72, 69, 0.2);
+      margin-top: 20px; /* space between the header and the container */
+    }
+    .title {
+      font-size: 23px;
+      font-weight: 600;
+      color: rgb(216, 144, 105);
+    }
+    .colored-text {
+      color: #902b29;
+    }
+    .input-box {
+      height: 50px;
+      width: 100%;
+      margin: 12px 0;
+    }
+    .input-box input,
+    .input-box textarea {
+      height: 100%;
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background: #f7f3ef;
+      border-radius: 6px;
+      padding: 0 15px;
+      resize: none;
+    }
+    input[type="submit"] {
         align-items: center;
         justify-content: center;
+        background-color: #902b29; /* Button background color */
+        color:#f7f3ef;
+        border: none; /* Remove border */
+        padding: 6px 10px; /* Padding around the text */
+        border-radius: 5px; /* Rounded corners */
+        font-size: 16px; /* Font size */
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;;
+        font-weight: bold;
+        cursor: pointer; 
+        transition: background-color 0.5s; 
+        margin: 25px auto;
     }
 
-    h1 {
-        margin: 0;
-        padding: 0;
-        white-space: nowrap;
+    input[type="submit"]:hover {
+        background-color: #611c1b; /* Darker shade for hover effect */
+    }
+    .contact-box{
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color:#902b29;
+    }
+    .contact-box select{
+        border-radius: 5px;
+        border:none;
+        background-color: #f7f3ef;
+        font-size: 15px;
+        align-items: center;
+        padding: 6px 10px;
     }
 
-    .clear {
-        clear: both;
-    }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <a href="index.html">
-            <img src="https://media.discordapp.net/attachments/1175292590569038017/1175292622017937458/Untitled_Artwork_6.png?ex=656ab38c&is=65583e8c&hm=7648eacf823ee66668b7060aaaebe15eed1f2d49070d5327ae403262055126e5&=&width=1010&height=1046" alt="Chocolate Chip Logo" class="logo">
+
+  </style>
+    <body>
+        <a href="user-dashboard.html">
+            <div class="header">
+                <img src="https://cdn.discordapp.com/attachments/1175292590569038017/1175515806122123427/Untitled_Artwork_7.png?ex=656b8368&is=65590e68&hm=ab22f752e66063dbeecbcf3c30106b1738c70b7f9f2a2c172bd5d6c12bea70c2&" alt="Logo"> <!-- Update with your logo path -->
+                <span class="website-name">chocolate chip</span>
+            </div>
         </a>
-        <div class="title">
-            <h1><b>Chocolate Chip</b></h1>
-        </div>
-    </div>
-    <div class="clear"></div> <!-- Clearing div -->
-    </div>
 
-    
-</body>
+        <div class="container">
+            <div class="title">create a new <span class="colored-text">contact</span></div>
+                <form action="#">
+                    <div class="input-box">
+                        <input type="text" placeholder="enter contact name">
+                    </div>
+
+                    <div class="contact-box">
+                            <label for="contact">type of contact</label>
+                        <select name="type" id="type" required>
+                            <option value="personal">personal</option>
+                            <option value="professional">professional</option>
+                        </select>
+                    </div>
+                    <a href="addContact"><input type="submit" value="submit"></a>
+                </form>
+        </div>
+    </body>
 </html>

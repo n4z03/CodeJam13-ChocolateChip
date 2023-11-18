@@ -1,12 +1,10 @@
-# another class can be defined to represent an ordered dictionary
-# instead of the current scuffed list pair which doubles the amount of code we need
 from enum import Enum, auto
 class ConnectionType(Enum):
     PERSONAL = auto()
     PROFESSIONAL = auto()
 
 class Chip:
-    def __init__(self, first_name, last_name, phone, social, email, connection_type):
+    def __init__(self, first_name, last_name, phone = None, social = None, email = None):
         self.attribute_list = []
         self.information_list = []
 
@@ -25,23 +23,49 @@ class Chip:
         self.attribute_list.append("Email")
         self.information_list.append(email)
 
-        self.connection_type = connection_type
-
     def add_attribute(self, attribute):
         self.attribute_list.append(attribute)
         self.information_list.append("")
    
-    def change_attribute(self, index, attribute):
+    def change_attribute(self, old_attribute, attribute):
+        index = 0
+        for i in range(len(self.attribute_list)):
+            if self.attribute_list[i] == old_attribute:
+                index = i
+                break
+
         self.attribute_list[index] = attribute
    
-    def change_information(self, index, information):
+    def change_information(self, attribute, information):
+        index = 0
+        for i in range(len(self.attribute_list)):
+            if self.attribute_list[i] == attribute:
+                index = i
+                break
         self.information_list[index] = information
 
-    def delete_attribute(self, index):
+    def delete_attribute(self, attribute):
+        index = 0
+        for i in range(len(self.attribute_list)):
+            if self.attribute_list[i] == attribute:
+                index = i
+                break
         self.attribute_list.remove(index)
         self.information_list.remove(index)
 
-    def swap(self, index1, index2):
+    def swap(self, attribute1, attribute2):
+        index1 = 0
+        index2 = 0
+        for i in range(len(self.attribute_list)):
+            if self.attribute_list[i] == attribute1:
+                index1 = i
+                break
+
+        for j in range(len(self.attribute_list)):
+            if self.attribute_list[j] == attribute2:
+                index2 = i
+                break
+
         self.attribute_list[index1], self.attribute_list[index2] = self.attribute_list[index2], self.attribute_list[index1]
         self.information_list[index1], self.information_list[index2] = self.information_list[index2], self.information_list[index1]
         
