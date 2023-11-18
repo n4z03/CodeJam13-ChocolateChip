@@ -48,7 +48,7 @@ with app.app_context():
     @app.route('/login', methods=['GET', 'POST'])
     def login():
         if request.method == 'POST':
-            username = request.form['name']
+            username = request.form['username']
             password = request.form['password']
             
             # Check if the user is in the database
@@ -57,12 +57,13 @@ with app.app_context():
                 # Redirect to a success page or perform an action upon successful login
                 session['name'] = username
                 session['logged_in'] = True
-                return redirect('chipviewer')
+                return render_template('chip-viewer.html', username = session['name'])
             else:
                 # Output an error message
                 error = "Invalid username or password. Please try again."
                 return render_template('login.html', error=error)
-
+            
+        return render_template('login.html')
     # Remove the user from the session
     @app.route('/logout')
     def logout():
@@ -76,6 +77,7 @@ with app.app_context():
     
     @app.route('/chipviewer')
     def chipviewer():
+        
         return render_template("chip-viewer.html")
     
     if __name__ == '__main__':
