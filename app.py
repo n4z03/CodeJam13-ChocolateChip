@@ -37,7 +37,7 @@ with app.app_context():
             db.session.add(new_user)
             db.session.commit()
             # Return on signup (could change to an html file)
-            return "Data stored successfully!"
+            return render_template("chip-viewer.html", username = name)
         else:
             error = "Username already exists please try again."
             return render_template("signup.html", error = error)

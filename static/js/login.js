@@ -8,11 +8,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         alert("Please enter both username and password");
         return false;
     }
-
-    // Here you can add more validation or send data to server
-    alert("Login successful!");
-
     // Redirect to another page or perform other actions after login
-
+    
     return true;
 });
