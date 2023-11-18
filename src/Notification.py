@@ -15,3 +15,4 @@ class Notification:
     
     def modify(self, date):
         self.date = date
+

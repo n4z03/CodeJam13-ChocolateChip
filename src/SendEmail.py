@@ -1,8 +1,10 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import time
+import logging
 
-def sendemail(target_email, html_file_path):
+def send_email(target_email, html_file_path):
     HOST = "smtp-mail.outlook.com"
     PORT = 587
 
@@ -18,7 +20,7 @@ def sendemail(target_email, html_file_path):
     message['Bcc'] = FROM_EMAIL
 
     html = ""
-    with open("templates\email.html", "r") as file:
+    with open(html_file_path, "r") as file:
         html = file.read()
 
     html_part = MIMEText(html, 'html')
@@ -37,3 +39,15 @@ def sendemail(target_email, html_file_path):
 
     smtp.sendmail(FROM_EMAIL, TO_EMAIL, message.as_string())
     smtp.quit()
+
+if __name__ == "__main__":
+
+    while True:
+        try:
+            send_email("marachljll@gmail.com", "C:/Users/llimge/Documents/Mcgill Classes/CJAM 2023/CodeJam13/templates/email.html")
+            logging.info("Function executed successfully.")
+        except Exception as e:
+            logging.error(f"Error during function execution: {e}")
+        
+        time.sleep(300)
+    
