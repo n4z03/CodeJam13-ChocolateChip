@@ -2,128 +2,139 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Responsive Contact Us Form  | CodingLab </title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+    <title>create contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <style>
+    body {
+        min-height: 100vh;
+        background: #f6dcc2;
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        justify-content: flex-start;
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin: 20px; 
+    }
+    
+    a {
+        text-decoration: none; 
+        color: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+    }
 
-   <style>
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family:  "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+    .header {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background: #f6dcc2;
+    }
+    
+    .header img {
+        height: 45px;
+        margin-right: 10px;
+    }
+    .website-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #902b29;
+    }
+    .container {
+      width: 30%;
+      background: #fff;
+      border-radius: 6px;
+      padding: 20px 60px 20px 40px;
+      box-shadow: 0 5px 10px rgba(99, 72, 69, 0.2);
+      margin-top: 20px; /* space between the header and the container */
+    }
+    .title {
+      font-size: 23px;
+      font-weight: 600;
+      color: rgb(216, 144, 105);
+    }
+    .colored-text {
+      color: #902b29;
+    }
+    .input-box {
+      height: 50px;
+      width: 100%;
+      margin: 12px 0;
+    }
+    .input-box input,
+    .input-box textarea {
+      height: 100%;
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background: #f7f3ef;
+      border-radius: 6px;
+      padding: 0 15px;
+      resize: none;
+    }
+    input[type="submit"] {
+        align-items: center;
+        justify-content: center;
+        background-color: #902b29; /* Button background color */
+        color:#f7f3ef;
+        border: none; /* Remove border */
+        padding: 6px 10px; /* Padding around the text */
+        border-radius: 5px; /* Rounded corners */
+        font-size: 16px; /* Font size */
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;;
+        font-weight: bold;
+        cursor: pointer; 
+        transition: background-color 0.5s; 
+        margin: 25px auto;
+    }
 
-body{
-  min-height: 100vh;
-  width: 100%;
-  background: #f6dcc2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family:  "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-.container{
-  width: 85%;
-  background: #fff;
-  border-radius: 6px;
-  padding: 20px 60px 30px 40px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-.container .content{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    input[type="submit"]:hover {
+        background-color: #611c1b; /* Darker shade for hover effect */
+    }
+    .contact-box{
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color:#902b29;
+    }
+    .contact-box select{
+        border-radius: 5px;
+        border:none;
+        background-color: #f7f3ef;
+        font-size: 15px;
+        align-items: center;
+        padding: 6px 10px;
+    }
 
-.container .content .right-side{
-  width: 75%;
-  margin-left: 75px;
-}
-.content .right-side .title{
-  font-size: 23px;
-  font-weight: 600;
-  color: #611c1b;
-}
-.right-side .input-box{
-  height: 50px;
-  width: 100%;
-  margin: 12px 0;
-}
-.right-side .input-box input,
-.right-side .input-box textarea{
-  height: 100%;
-  width: 100%;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  background: #F0F1F8;
-  border-radius: 6px;
-  padding: 0 15px;
-  resize: none;
-}
-.right-side .message-box{
-  min-height: 110px;
-}
-.right-side .input-box textarea{
-  padding-top: 6px;
-}
-.right-side .button{
-  display: inline-block;
-  margin-top: 12px;
-}
 
-@media (max-width: 950px) {
-  .container{
-    width: 90%;
-    padding: 30px 40px 40px 35px ;
-  }
-  .container .content .right-side{
-   width: 75%;
-   margin-left: 55px;
-}
-}
-@media (max-width: 820px) {
-  .container{
-    margin: 40px 0;
-    height: 100%;
-  }
-  .container .content{
-    flex-direction: column-reverse;
-  }
- .container .content .left-side{
-   width: 100%;
-   flex-direction: row;
-   margin-top: 40px;
-   justify-content: center;
-   flex-wrap: wrap;
- }
- .container .content .left-side::before{
-   display: none;
- }
- .container .content .right-side{
-   width: 100%;
-   margin-left: 0;
- }
-}
-   </style>
+  </style>
+    <body>
+        <a href="user-dashboard.html">
+            <div class="header">
+                <img src="https://cdn.discordapp.com/attachments/1175292590569038017/1175515806122123427/Untitled_Artwork_7.png?ex=656b8368&is=65590e68&hm=ab22f752e66063dbeecbcf3c30106b1738c70b7f9f2a2c172bd5d6c12bea70c2&" alt="Logo"> <!-- Update with your logo path -->
+                <span class="website-name">chocolate chip</span>
+            </div>
+        </a>
 
-<body>
-  <div class="container">
-    <div class="content">
-      <div class="right-side">
-        <div class="title">add a new chip</div>
-      <form action="#">
-        <div class="input-box">
-          <input type="text" placeholder="Enter contact name">
+        <div class="container">
+            <div class="title">create a new <span class="colored-text">contact</span></div>
+                <form action="#">
+                    <div class="input-box">
+                        <input type="text" placeholder="enter contact name">
+                    </div>
+
+                    <div class="contact-box">
+                            <label for="contact">type of contact</label>
+                        <select name="type" id="type" required>
+                            <option value="personal">personal</option>
+                            <option value="professional">professional</option>
+                        </select>
+                    </div>
+                    <a href="addContact"><input type="submit" value="submit"></a>
+                </form>
         </div>
-        <div class="input-box">
-          <input type="text" placeholder="Enter contact email">
-        </div>
-        <div class="input-box message-box">
-      </form>
-    </div>
-    </div>
-  </div>
-</body>
+    </body>
 </html>
