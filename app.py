@@ -30,7 +30,7 @@ with app.app_context():
     @app.route('/users')
     def get_users():
         users = User.query.all()
-        return render_template('user.html', users=users)
+        return render_template('users.html', users=users)
 
     @app.route('/login', methods=['GET', 'POST'])
     def login():
