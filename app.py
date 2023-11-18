@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
-import json
+
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'  # SQLite database file
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'  # SQLite database file
 db = SQLAlchemy(app)
 
 app.secret_key = 'luisisaacnazrup' #Session key
@@ -25,8 +25,8 @@ with app.app_context():
         # Check if the user is logged in
         logged_in = session.get('logged_in', False)
         if logged_in:
-            username = session.get('name')
-            return render_template('chip-viewer.html', username = username)
+            contacts = Contact.query.all()
+            return render_template('chip-viewer.html', contacts = contacts)
         else:
             return render_template('index.html')
 
@@ -76,6 +76,7 @@ with app.app_context():
                 return render_template('login.html', error=error)
             
         return render_template('login.html')
+    
     # Remove the user from the session
     @app.route('/logout')
     def logout():
