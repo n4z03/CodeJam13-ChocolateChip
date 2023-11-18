@@ -1,15 +1,36 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import time
-import logging
 
-def send_email(target_email, html_file_path):
+def update_email_html(user):
+    fobj = open("C:/Users/llimge/Documents/Mcgill Classes/CJAM 2023/CodeJam13/templates/email-template.html", "r")
+    html_str = ""
+    for i in fobj:
+        html_str += i
+    html_tokenized = html_str.split("|")
+    for i in range(len(html_tokenized)):
+        if html_tokenized[i] == "UserName":
+            html_tokenized[i] = "Jam jam" #user.name
+        elif html_tokenized[i] == "ChipName":
+            html_tokenized[i] = "bruh"
+        elif html_tokenized[i] == "Type":
+            html_tokenized[i] = "ok"
+        elif html_tokenized[i] == "Contact":
+            html_tokenized[i] = "nice"
+    html_str = ""
+    for i in html_tokenized:
+        html_str += i
+    print(html_str)
+    
+        
+    
+
+def send_email(target_email):
     HOST = "smtp-mail.outlook.com"
     PORT = 587
 
     FROM_EMAIL = "chocolate_chip_reminder@outlook.com"
-    TO_EMAIL = "marachljll@gmail.com"
+    TO_EMAIL = target_email
     PASSWORD = "oqjoayjmaoqboowi" #getpass.getpass("HackathonHotties2023")
 
     message = MIMEMultipart("alternative")
@@ -20,7 +41,7 @@ def send_email(target_email, html_file_path):
     message['Bcc'] = FROM_EMAIL
 
     html = ""
-    with open(html_file_path, "r") as file:
+    with open("C:/Users/llimge/Documents/Mcgill Classes/CJAM 2023/CodeJam13/templates/email.html", "r") as file:
         html = file.read()
 
     html_part = MIMEText(html, 'html')
@@ -41,13 +62,12 @@ def send_email(target_email, html_file_path):
     smtp.quit()
 
 if __name__ == "__main__":
-
-    while True:
-        try:
-            send_email("marachljll@gmail.com", "C:/Users/llimge/Documents/Mcgill Classes/CJAM 2023/CodeJam13/templates/email.html")
-            logging.info("Function executed successfully.")
-        except Exception as e:
-            logging.error(f"Error during function execution: {e}")
-        
-        time.sleep(300)
+    update_email_html(1)
+    """
+    try:
+        send_email("marachljll@gmail.com")
+        logging.info("Function executed successfully.")
+    except Exception as e:
+        logging.error(f"Error during function execution: {e}")
+    """
     
