@@ -14,6 +14,7 @@ class User(db.Model):
 with app.app_context():
     @app.route('/')
     def index():
+        
         return render_template('index.html')
 
     @app.route('/process', methods=['POST'])
@@ -56,6 +57,10 @@ with app.app_context():
     @app.route('/signup')
     def signup():
         return render_template('signup.html')
+    
+    @app.route('/chipviewer')
+    def chipviewer():
+        return render_template("chip-viewer.html")
     if __name__ == '__main__':
         db.create_all()  # Create tables based on defined models
         app.run(debug=True)
