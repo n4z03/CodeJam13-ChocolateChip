@@ -30,12 +30,15 @@ with app.app_context():
         name = request.form['name']
         password = request.form['password']
         # Check if the user is in the database
-        user = User.query.filter_by(name=name, password=password).first()
+        user = User.query.filter_by(name=name).first()
         if not user:
         # Add user to database
             new_user = User(name=name, password=password)
             db.session.add(new_user)
             db.session.commit()
+
+            session['name'] = name
+            session['logged_in'] = True
             # Return on signup (could change to an html file)
             return render_template("chip-viewer.html", username = name)
         else:
