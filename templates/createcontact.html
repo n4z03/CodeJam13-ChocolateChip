@@ -51,7 +51,7 @@
       margin-top: 20px; /* space between the header and the container */
     }
     .title {
-      font-size: 23px;
+      font-size: 30px;
       font-weight: 600;
       color: rgb(216, 144, 105);
     }
@@ -75,7 +75,15 @@
       padding: 0 15px;
       resize: none;
     }
+
+    .submit-button-container{
+        display: flex;
+        justify-content:
+    }
+    
     input[type="submit"] {
+        height: 40px;
+        width: 80px;
         align-items: center;
         justify-content: center;
         background-color: #902b29; /* Button background color */
@@ -104,9 +112,11 @@
         border-radius: 5px;
         border:none;
         background-color: #f7f3ef;
-        font-size: 15px;
-        align-items: center;
-        padding: 6px 10px;
+        font-size: 16px;
+        padding: 10px 10px;
+        margin-top: 10px;
+        justify-content: center;
+        height: 50px;
     }
 
 
@@ -127,13 +137,19 @@
                     </div>
 
                     <div class="contact-box">
-                            <label for="contact">type of contact</label>
+                            <label for="contact">type of contact</label><br>
                         <select name="type" id="type" required>
                             <option value="personal">personal</option>
                             <option value="professional">professional</option>
                         </select>
                     </div>
-                    <a href="addContact"><input type="submit" value="submit"></a>
+
+
+                    <form action:"addContact">
+                        <div class="submit-button-container">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </form>
                 </form>
         </div>
     </body>
