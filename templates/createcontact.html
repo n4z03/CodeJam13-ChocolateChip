@@ -1,63 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Chocolate Chip</title>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    body {
-        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #f6dcc2;
-        background-color: #611c1b;
-        margin: 0;
-        padding: 0;
-    }
+    <title> Responsive Contact Us Form  | CodingLab </title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
 
-    .logo {
-        width: 7%;
-        height: auto;
-        float: left;
-        padding-right: 30px;
-    }
-  
-    .title {
-        color: #f4ba80;
-        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 13px;
-        float: left;
-    }
+   <style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:  "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
-    .header {
-        padding-top: 20px;
-        padding-left: 20px;
-        padding-right: 20px;
-        align-items: center;
-        justify-content: center;
-    }
+body{
+  min-height: 100vh;
+  width: 100%;
+  background: #f6dcc2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family:  "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.container{
+  width: 85%;
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px 60px 30px 40px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.container .content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-    h1 {
-        margin: 0;
-        padding: 0;
-        white-space: nowrap;
-    }
+.container .content .right-side{
+  width: 75%;
+  margin-left: 75px;
+}
+.content .right-side .title{
+  font-size: 23px;
+  font-weight: 600;
+  color: #611c1b;
+}
+.right-side .input-box{
+  height: 50px;
+  width: 100%;
+  margin: 12px 0;
+}
+.right-side .input-box input,
+.right-side .input-box textarea{
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #F0F1F8;
+  border-radius: 6px;
+  padding: 0 15px;
+  resize: none;
+}
+.right-side .message-box{
+  min-height: 110px;
+}
+.right-side .input-box textarea{
+  padding-top: 6px;
+}
+.right-side .button{
+  display: inline-block;
+  margin-top: 12px;
+}
 
-    .clear {
-        clear: both;
-    }
-    </style>
-</head>
+@media (max-width: 950px) {
+  .container{
+    width: 90%;
+    padding: 30px 40px 40px 35px ;
+  }
+  .container .content .right-side{
+   width: 75%;
+   margin-left: 55px;
+}
+}
+@media (max-width: 820px) {
+  .container{
+    margin: 40px 0;
+    height: 100%;
+  }
+  .container .content{
+    flex-direction: column-reverse;
+  }
+ .container .content .left-side{
+   width: 100%;
+   flex-direction: row;
+   margin-top: 40px;
+   justify-content: center;
+   flex-wrap: wrap;
+ }
+ .container .content .left-side::before{
+   display: none;
+ }
+ .container .content .right-side{
+   width: 100%;
+   margin-left: 0;
+ }
+}
+   </style>
+
 <body>
-    <div class="header">
-        <a href="index.html">
-            <img src="https://media.discordapp.net/attachments/1175292590569038017/1175292622017937458/Untitled_Artwork_6.png?ex=656ab38c&is=65583e8c&hm=7648eacf823ee66668b7060aaaebe15eed1f2d49070d5327ae403262055126e5&=&width=1010&height=1046" alt="Chocolate Chip Logo" class="logo">
-        </a>
-        <div class="title">
-            <h1><b>Chocolate Chip</b></h1>
+  <div class="container">
+    <div class="content">
+      <div class="right-side">
+        <div class="title">add a new chip</div>
+      <form action="#">
+        <div class="input-box">
+          <input type="text" placeholder="Enter contact name">
         </div>
+        <div class="input-box">
+          <input type="text" placeholder="Enter contact email">
+        </div>
+        <div class="input-box message-box">
+      </form>
     </div>
-    <div class="clear"></div> <!-- Clearing div -->
     </div>
-
-    
+  </div>
 </body>
 </html>
