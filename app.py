@@ -29,15 +29,18 @@ with app.app_context():
     def process():
         name = request.form['name']
         password = request.form['password']
-
+        # Check if the user is in the database
+        user = User.query.filter_by(name=name, password=password).first()
+        if not user:
         # Add user to database
-        new_user = User(name=name, password=password)
-        db.session.add(new_user)
-        db.session.commit()
-
-        # Return on signup (could change to an html file)
-        return "Data stored successfully!"
-
+            new_user = User(name=name, password=password)
+            db.session.add(new_user)
+            db.session.commit()
+            # Return on signup (could change to an html file)
+            return render_template("chip-viewer.html", username = name)
+        else:
+            error = "Username already exists please try again."
+            return render_template("signup.html", error = error)
     # Display the users in database
     @app.route('/users')
     def get_users():
@@ -77,7 +80,6 @@ with app.app_context():
     
     @app.route('/chipviewer')
     def chipviewer():
-        
         return render_template("chip-viewer.html")
     
     if __name__ == '__main__':
