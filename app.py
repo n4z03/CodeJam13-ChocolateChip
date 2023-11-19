@@ -57,6 +57,7 @@ with app.app_context():
 
             session['name'] = name
             session['logged_in'] = True
+            session['email'] = email
             # Return on signup (could change to an html file)
             contacts = Contact.query.all()
             return render_template("chip-viewer.html", username = name, contacts = contacts)
@@ -75,13 +76,14 @@ with app.app_context():
         if request.method == 'POST':
             username = request.form['username']
             password = request.form['password']
-            
+            email = request.form['email']
             # Check if the user is in the database
             user = User.query.filter_by(name=username, password=password).first()
             if user:
                 # Redirect to a success page or perform an action upon successful login
                 session['name'] = username
                 session['logged_in'] = True
+                session['email'] = email
                 contacts = Contact.query.all()
                 return render_template('chip-viewer.html', username = session['name'], contacts = contacts)
             else:
