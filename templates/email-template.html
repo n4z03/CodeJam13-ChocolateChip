@@ -1,41 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Reminder</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffb163; 
-            color: #4A1717; 
-        }
-
-        header {
-            background-color: #902b29; 
-            color: #FFFFFF; 
-            padding: 10px;
-            text-align: center;
-        }
-
-        .content {
-            padding: 20px;
-        }
-        
-        span.chipname, span.type, span.contact, span.email{
-            font-style: italic;
-            color: #8C4949; 
-        }
-    </style>
+    <!-- Other head elements -->
 </head>
-<body>
-    <header>
-        Hello <span class="username">|UserName|</span>
-    </header>
-    <div class="content">
-        Here is your reminder to reach out to <span class="chipname">|ChipName|</span> <br>
-        Connection type: <span class="type">|Type|</span> <br>
-        Email: <span class="email">|Email|</span> <br>
+<body style="min-height: 100vh; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #611c1b; font-weight: bold; margin: 20px;">
+
+    <div style="background-color: #611c1b; width: 100%; display: flex; justify-content: center; padding: 20px 0;">
+        <a href="chip-viewer.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; justify-content: center;">
+            <div class="header" style="display: flex; align-items: center;">
+                <img src="https://cdn.discordapp.com/attachments/1175292590569038017/1175292622017937458/Untitled_Artwork_6.png" alt="Logo" style="height: 45px; margin-right: 10px;">
+                <span class="website-name" style="font-size: 35px; font-weight: bold; color: hsl(30, 74%, 86%);">chocolate chip</span>
+            </div>
+        </a>
     </div>
+
+    <div class="content" style="width: 100%; max-width: 300px; margin-top: 20px; padding: 20px 40px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); align-self: center;">
+        <p>Hello |UserName|</p>
+        <p>Here is your reminder to reach out to <span class="chipname">|ChipName|</span></p>
+        <p>Type: |Type|</p>
+        <p>Phone: |Phone|</p>
+        <p>Email: |Email|</p>
+        <p>Social Media: |Social Media|</p>
+        <p>Other: |Other|</p>
+    </div>
+
 </body>
 </html>

@@ -1,24 +1,28 @@
 import heapq
-import Notification
-import SendEmail
+from src.Notification import Notification
+
+from src.SendEmail import update_email_html, send_email
 from datetime import datetime
+
+existing = set()
 
 class NotificationQueue:
     def __init__(self):
         self.heap = []
-
-    def __init__(self, filepath):
-        self.heap = []
-
+    
     def add_notification(self, notification = Notification):
         heapq.heappush(self.heap, notification)
+        existing.add(notification)
+
+    def exists(self, notification):
+        return notification in existing
 
     def process_notifications(self):
         current_date = datetime.now()
         while self.heap and self.heap[0].date <= current_date:
             notification = heapq.heappop(self.heap)
-            SendEmail.update_email_html(notification)
-            SendEmail.send_email(0) #session.user.email
+            update_email_html(notification)
+            send_email(0) #session.user.email
         heapq.heapify(self.heap)
 
     def modify_notification(self, notification, new_date):
@@ -28,7 +32,6 @@ class NotificationQueue:
             heapq.heapify(self.heap)
 
 # Create the queue
-notification_queue = NotificationQueue()
 
 # Example: Adding notifications
 

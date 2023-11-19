@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
-from src.NotificationQueue import NotificationQueue
-from src.Notification import Notification
-
+from src.NotificationQueue import NotificationQueue, Notification
+import json
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'  # SQLite database file
@@ -110,38 +109,50 @@ with app.app_context():
     
     @app.route('/chipviewer')
     def chipviewer():
-        if session.get('logged_in'):
+        if not session.get('logged_in'):
             contacts = Contact.query.all()
             for contact in contacts:
-                notification = Notification(contact)
-
-                if not notification_queue.exists(notification):
-                    notification_queue.add_notification(notification)
+                if contact:
+                    notification = Notification(contact)
+                    if not notification_queue.exists(notification):
+                        notification_queue.add_notification(notification)
 
             return render_template("chip-viewer.html", contacts = contacts)
         
         else:
-
-            return "Access Denied"
+            contacts = Contact.query.all()
+            return render_template("chip-viewer.html", contacts = contacts)
   
     @app.route('/addChip', methods=['POST'])
     def add_chip():
-        if request.method == 'POST':
-            name = request.form['name']
-            type = request.form['type']
-            email = request.form['email']
-            # Process the keys and values as needed (e.g., store in database)
-            # Example: Printing keys and values
-            contact = Contact(name = name, type = type, email = email)
-            db.session.add(contact)
-            db.session.commit()
+        name = None
+        type = None
+        email = None
+        phone = None
+        social = None
+        
+        data = request.json.get('data')
+        print (data)
+        for key in data:
+            if key == "name":
+                name = data[key]
+            elif key == "type":
+                type = data[key]
+            elif key == "email":
+                email = data[key]
+            elif key == "phone number":
+                phone = data[key]
+            elif key == "social media":
+                social = data[key]
+        
+        # Process the keys and values as needed (e.g., store in database)
+        # Example: Printing keys and values
+        contact = Contact(session['name'], name, type, phone, email, social)
+        db.session.add(contact)
+        db.session.commit()
         
         # Redirect to view contacts
         return redirect('chipviewer')
-     
-    @app.route('/chips')
-    def chips():
-        return render_template('chips.html')
     
     @app.route('/createcontact')
     def createchip():

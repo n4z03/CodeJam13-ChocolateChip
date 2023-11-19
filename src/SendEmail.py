@@ -1,31 +1,34 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from .. import apppy
+
 
 def update_email_html(contact):
-    fobj = open("templates/email-template.html", "r")
-    html_str = ""
-    for i in fobj:
-        html_str += i
-    html_tokenized = html_str.split("|")
-    for i in range(len(html_tokenized)):
-        if html_tokenized[i] == "UserName":
-            html_tokenized[i] = "Jam jam" #user session.name
-        elif html_tokenized[i] == "ChipName":
-            html_tokenized[i] = "bruh" #contact.name
-        elif html_tokenized[i] == "Type":
-            html_tokenized[i] = "ok" #contact.type
-        elif html_tokenized[i] == "Contact":
-            html_tokenized[i] = "nice" #contact
-    html_str = ""
-    for i in html_tokenized:
-        html_str += i
-    print(html_str)
-    fobj.close
-    fobj = open("templates/email-to-send.html", "w")
-    fobj.write(html_str)
-    fobj.close
+    from app import app
+    with app.app_context():
+        from flask import session
+        fobj = open("templates/email-template.html", "r")
+        html_str = ""
+        for i in fobj:
+            html_str += i
+        html_tokenized = html_str.split("|")
+        for i in range(len(html_tokenized)):
+            if html_tokenized[i] == "UserName":
+                html_tokenized[i] = session['name'] #user session.name
+            elif html_tokenized[i] == "ChipName":
+                html_tokenized[i] = contact.name #contact.name
+            elif html_tokenized[i] == "Type":
+                html_tokenized[i] = contact.type #contact.type
+            elif html_tokenized[i] == "Email":
+                html_tokenized[i] = contact.email #contact
+        html_str = ""
+        for i in html_tokenized:
+            html_str += i
+        print(html_str)
+        fobj.close
+        fobj = open("templates/email-to-send.html", "w")
+        fobj.write(html_str)
+        fobj.close
     
         
     
@@ -46,7 +49,7 @@ def send_email(target_email):
     message['Bcc'] = FROM_EMAIL
 
     html = ""
-    with open("C:/Users/llimge/Documents/Mcgill Classes/CJAM 2023/CodeJam13/templates/email.html", "r") as file:
+    with open("templates/email-template.html", "r") as file:
         html = file.read()
 
     html_part = MIMEText(html, 'html')
@@ -67,12 +70,8 @@ def send_email(target_email):
     smtp.quit()
 
 if __name__ == "__main__":
-    update_email_html(1)
-    """
-    try:
-        send_email("marachljll@gmail.com")
-        logging.info("Function executed successfully.")
-    except Exception as e:
-        logging.error(f"Error during function execution: {e}")
-    """
+
+    send_email("marachljll@gmail.com")
+    send_email("luis.limgenco@mail.mcgill.com")
+    
     
