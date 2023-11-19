@@ -17,7 +17,8 @@ class NotificationQueue:
         current_date = datetime.now()
         while self.heap and self.heap[0].date <= current_date:
             notification = heapq.heappop(self.heap)
-            SendEmail.send_email(notification.user.email)
+            SendEmail.update_email_html(notification)
+            SendEmail.send_email(0) #session.user.email
         heapq.heapify(self.heap)
 
     def modify_notification(self, notification, new_date):
@@ -34,4 +35,8 @@ notification_queue.add_notification(Notification("2023-11-20", user_obj, cookie_
 notification_queue.add_notification(Notification("2023-11-25", user_obj, cookie_obj, chip_obj))
 
 # Process notifications (this would be called periodically, e.g., every day)
-notification_queue.process_notifications(send_email)
+if __name__ == "__main__":
+    notification_queue = NotificationQueue()
+    # load notification queue from database
+    # upload notification queue
+    # 

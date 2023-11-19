@@ -11,13 +11,24 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True) # Initialize column in database for id
     name = db.Column(db.String(100)) # Initialize column in database for name
     password = db.Column(db.String(100)) # Initialize column in databasefor password
+    email = db.Column(db.String(100))
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user = db.Column(db.String(100))
     name = db.Column(db.String(100))
     type = db.Column(db.String(100))
     email = db.Column(db.String(100))
-    
+    date = db.Column(db.String(100))
+    frequency = db.Column(db.String(100))
+    def __init__(self, user_email, name, type, email, date, frequency):
+        self.user_email = user_email
+        self.name = name
+        self.type = type
+        self.email = email
+        self.date = date
+        self.frequency = frequency
+
 with app.app_context():
     # Home route
     @app.route('/')
@@ -35,16 +46,18 @@ with app.app_context():
     def process():
         name = request.form['name']
         password = request.form['password']
+        email = request.form['email']
         # Check if the user is in the database already
         user = User.query.filter_by(name=name).first()
         if not user:
         # Add user to database
-            new_user = User(name=name, password=password)
+            new_user = User(name=name, password=password, email=email)
             db.session.add(new_user)
             db.session.commit()
 
             session['name'] = name
             session['logged_in'] = True
+            session['email'] = email
             # Return on signup (could change to an html file)
             contacts = Contact.query.all()
             return render_template("chip-viewer.html", username = name, contacts = contacts)
@@ -63,15 +76,14 @@ with app.app_context():
         if request.method == 'POST':
             username = request.form['username']
             password = request.form['password']
-            
+            email = request.form['email']
             # Check if the user is in the database
             user = User.query.filter_by(name=username, password=password).first()
             if user:
                 # Redirect to a success page or perform an action upon successful login
                 session['name'] = username
                 session['logged_in'] = True
-                contacts = Contact.query.all()
-                return render_template('chip-viewer.html', username = session['name'], contacts = contacts)
+                return render_template('chip-viewer.html', username = session['name'])
             else:
                 # Output an error message
                 error = "Invalid username or password. Please try again."
@@ -104,8 +116,8 @@ with app.app_context():
             name = request.form['name']
             type = request.form['type']
             email = request.form['email']
-            
-            # Create a contact with the user info and add to database
+            # Process the keys and values as needed (e.g., store in database)
+            # Example: Printing keys and values
             contact = Contact(name = name, type = type, email = email)
             db.session.add(contact)
             db.session.commit()

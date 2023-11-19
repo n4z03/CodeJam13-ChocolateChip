@@ -4,24 +4,11 @@ class ConnectionType(Enum):
     PROFESSIONAL = auto()
 
 class Chip:
-    def __init__(self, first_name, last_name, phone = None, social = None, email = None):
-        self.attribute_list = []
-        self.information_list = []
-
-        self.attribute_list.append("First Name")
-        self.information_list.append(first_name)
-
-        self.attribute_list.append("Last Name")
-        self.information_list.append(last_name)
-
-        self.attribute_list.append("Phone")
-        self.information_list.append(phone)
-
-        self.attribute_list.append("Social")
-        self.information_list.append(social)
-        
-        self.attribute_list.append("Email")
-        self.information_list.append(email)
+    def __init__(self, name = None, phone = None, social = None, email = None):
+        self.name = name
+        self.phone = phone
+        self.social = social
+        self.email = email
 
     def add_attribute(self, attribute):
         self.attribute_list.append(attribute)
