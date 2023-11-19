@@ -35,7 +35,7 @@ with app.app_context():
     def process():
         name = request.form['name']
         password = request.form['password']
-        # Check if the user is in the database
+        # Check if the user is in the database already
         user = User.query.filter_by(name=name).first()
         if not user:
         # Add user to database
@@ -46,7 +46,8 @@ with app.app_context():
             session['name'] = name
             session['logged_in'] = True
             # Return on signup (could change to an html file)
-            return render_template("chip-viewer.html", username = name)
+            contacts = Contact.query.all()
+            return render_template("chip-viewer.html", username = name, contacts = contacts)
         else:
             error = "Username already exists please try again."
             return render_template("signup.html", error = error)
@@ -69,7 +70,8 @@ with app.app_context():
                 # Redirect to a success page or perform an action upon successful login
                 session['name'] = username
                 session['logged_in'] = True
-                return render_template('chip-viewer.html', username = session['name'])
+                contacts = Contact.query.all()
+                return render_template('chip-viewer.html', username = session['name'], contacts = contacts)
             else:
                 # Output an error message
                 error = "Invalid username or password. Please try again."
@@ -90,8 +92,11 @@ with app.app_context():
     
     @app.route('/chipviewer')
     def chipviewer():
-        contacts = Contact.query.all()
-        return render_template("chip-viewer.html", contacts = contacts)
+        if session.get('logged_in'):
+            contacts = Contact.query.all()
+            return render_template("chip-viewer.html", contacts = contacts)
+        else:
+            return "Access Denied"
   
     @app.route('/addChip', methods=['POST'])
     def add_chip():
@@ -99,12 +104,13 @@ with app.app_context():
             name = request.form['name']
             type = request.form['type']
             email = request.form['email']
-            # Process the keys and values as needed (e.g., store in database)
-            # Example: Printing keys and values
+            
+            # Create a contact with the user info and add to database
             contact = Contact(name = name, type = type, email = email)
             db.session.add(contact)
             db.session.commit()
-           
+        
+        # Redirect to view contacts
         return redirect('chipviewer')
      
     @app.route('/chips')
