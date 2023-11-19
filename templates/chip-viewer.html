@@ -3,11 +3,11 @@
     <title>contact list</title>
     <style>
         body {
-            min-height: 100vh;
             background: #f6dcc2;
             font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-weight: bold;
-            margin: 20px 20px;
+            margin: 0;
+            padding: 20px;
+            display: flex;
             flex-direction: column; 
             align-items: center;
             justify-content: flex-start;
@@ -23,10 +23,10 @@
     }
 
     .header {
-        display: flex;
-        align-items: center;
-        background: #f6dcc2;
-    }
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
     
     .header img {
         height: 45px;
@@ -40,26 +40,23 @@
     
         h2 {
             text-align: center;
-            margin-bottom: 30px;
             color: #902b29;
             font-size: 35px;
         }
         .contact {
+            cursor: url('https://cdn.discordapp.com/attachments/1175292590569038017/1175753044688908308/Untitled_Artwork_2.png?ex=656c605a&is=6559eb5a&hm=783a21942d6f9c31145b42341b4970f04269e24d78b053d3d9cf9125f44c5921&'), auto;
             background-color: #fff;
             border-radius: 8px;
             padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            margin-bottom: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            min-height: 250px;
-
         }
         .contact:hover {
             transform: scale(1.03); 
             box-shadow: 0 12px 20px rgba(103, 103, 103, 0.5), 0 0 40px rgba(67, 67, 67, 0.3), 0 0 80px rgba(193, 193, 193, 0.412); 
         }
         .contact p {
-            margin: 8px 0;
+            margin: 5px 0;
             color: #800000; 
         }
         .contact strong {
@@ -84,6 +81,16 @@
 .button-link:hover {
     background-color: #611c1b;
 }
+
+.container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+        }
     </style>
 </head>
 <body>
@@ -94,7 +101,7 @@
         </div>
     </a>
 
-    <form id="contactForm"> 
+    <!-- <form id="contactForm">  -->
         <div class="container">
             <h2>contact list</h2>
 
@@ -115,6 +122,6 @@
             </div>
         </div>
     
-    </form>
+    <!-- </form> -->
 </body>
 </html>
