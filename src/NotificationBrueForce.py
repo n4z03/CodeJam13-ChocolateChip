@@ -3,13 +3,11 @@ import time
 from apscheduler.schedulers.background import BackgroundScheduler
 
 def get_all_contacts():
-    conn = sqlite3.connect('data.db')  # Connect to the database
+    conn = sqlite3.connect('data.db') 
     cursor = conn.cursor()
 
-    # Query to select all records from the Contact table
     cursor.execute("SELECT * FROM contact")
     
-    # Fetch all rows from the query result
     contacts = cursor.fetchall()
 
     conn.close()

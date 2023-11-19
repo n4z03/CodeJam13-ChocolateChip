@@ -50,20 +50,14 @@ class NotificationQueue:
             heapq.heapify(self.heap)
     """
 
-# Create the queue
 
-# Example: Adding notifications
-
-
-# Process notifications (this would be called periodically, e.g., every day)
 def get_all_contacts():
-    conn = sqlite3.connect('data.db')  # Connect to the database
+    conn = sqlite3.connect('data.db') 
     cursor = conn.cursor()
 
-    # Query to select all records from the Contact table
+
     cursor.execute("SELECT * FROM contact")
-    
-    # Fetch all rows from the query result
+
     contacts = cursor.fetchall()
 
     conn.close()
@@ -71,17 +65,13 @@ def get_all_contacts():
 
 if __name__ == '__main__':
     scheduler = BackgroundScheduler()
-    scheduler.add_job(check_new_contacts, 'interval', minutes=5)  # Check every 5 minutes
+    scheduler.add_job(check_new_contacts, 'interval', minutes=5) 
     scheduler.start()
 
     try:
-        # Keep the script running
         while True:
             time.sleep(2)
     except (KeyboardInterrupt, SystemExit):
         scheduler.shutdown()
 
     notification_queue = NotificationQueue()
-    # load notification queue from database
-    # upload notification queue
-    # 
