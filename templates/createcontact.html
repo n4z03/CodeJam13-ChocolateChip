@@ -15,6 +15,7 @@
         justify-content: flex-start;
         font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
         margin: 20px 20px;
+        cursor: url('https://cdn.discordapp.com/attachments/1175292590569038017/1175753044688908308/Untitled_Artwork_2.png?ex=656c605a&is=6559eb5a&hm=783a21942d6f9c31145b42341b4970f04269e24d78b053d3d9cf9125f44c5921&'), auto;
     }
     
     a {
@@ -89,7 +90,7 @@
    
     .input-box input,
     .input-box textarea {
-        margin-top: 10px;
+    margin-top: 10px;
       height: 100%;
       width: 100%;
       border: none;
@@ -126,6 +127,7 @@
 
     input[type="submit"]:hover {
         background-color: #611c1b; 
+        cursor: url('https://cdn.discordapp.com/attachments/1175292590569038017/1175753044688908308/Untitled_Artwork_2.png?ex=656c605a&is=6559eb5a&hm=783a21942d6f9c31145b42341b4970f04269e24d78b053d3d9cf9125f44c5921&'), auto;
     }
 
     
@@ -136,6 +138,7 @@
         font-weight: bold;
         color:#902b29;
         margin-top: 20px;
+        cursor: url('https://cdn.discordapp.com/attachments/1175292590569038017/1175753044688908308/Untitled_Artwork_2.png?ex=656c605a&is=6559eb5a&hm=783a21942d6f9c31145b42341b4970f04269e24d78b053d3d9cf9125f44c5921&'), auto;
     }
    
     .contact-box select{
@@ -147,6 +150,7 @@
         margin-top: 10px;
         justify-content: center;
         height: 50px;
+        cursor: url('https://cdn.discordapp.com/attachments/1175292590569038017/1175753044688908308/Untitled_Artwork_2.png?ex=656c605a&is=6559eb5a&hm=783a21942d6f9c31145b42341b4970f04269e24d78b053d3d9cf9125f44c5921&'), auto;
     }
 
     button {
@@ -203,6 +207,46 @@
     margin-bottom: 13px;
 }
 
+.reminders{
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color:#902b29;
+        margin-top: 20px;
+    }
+    
+    /* personal or professional drop down */
+    .reminders select{
+        border-radius: 5px;
+        border:none;
+        background-color: #f7f3ef;
+        font-size: 16px;
+        padding: 10px 10px;
+        margin-top: 15px;
+        justify-content: center;
+        height: 40px;
+        margin-bottom: 15px;
+        margin-right: 20px;
+    }
+
+    .reminders input{
+      height: 100%;
+      width: 20%;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background: #f7f3ef;
+      border-radius: 6px;
+      padding: 10px 10px;
+      resize: none;
+      color:black;
+
+    }
+
+    h2{
+        color: rgb(216, 144, 105);
+    }
+
   </style>
     <body>
         <a href="user-dashboard.html">
@@ -230,6 +274,7 @@
     
                 <div class="detail-box">
                     <label for="addDetailCaption">add details (optional)</label><br>
+                    
                     <select id="detailDropdown">
                         <option value="option1">phone number</option>
                         <option value="option2">email</option>
@@ -242,7 +287,42 @@
 
                     <div id="messageBox"></div>
                 </div>
-                
+
+                <h2>create reminders</h2>
+                <div class="reminders">
+                    
+                    <label for="starting-day"><i>enter starting day:</i></label><br>
+                    <label for="dayInput">day:</label>
+                    <input type="number" id="dayInput" name="day" min="1" max="31" placeholder="day" required>
+                    <br>
+                    <label for="monthDropdown">month:</label>
+                    <select id="monthDropdown" name="month" required>
+                        <option value="">select month</option>
+                        <option value="1">january</option>
+                        <option value="2">february</option>
+                        <option value="3">march</option>
+                        <option value="4">april</option>
+                        <option value="5">may</option>
+                        <option value="6">june</option>
+                        <option value="7">july</option>
+                        <option value="8">august</option>
+                        <option value="9">september</option>
+                        <option value="10">october</option>
+                        <option value="11">november</option>
+                        <option value="12">december</option>
+                    </select>
+                    <br>
+                    <label for="yearInput">year:</label>
+                    <input type="number" id="yearInput" name="year" min="2023" max="2100" placeholder="year" required>
+
+                    <br><br>
+                    <label for="freq"><i>enter frequency:</i></label><br>
+                    <label for="freqnum">i want to be reminded to connect every</label>
+                    <input type="number" id="dayInput2" name="day" min="1" max="50000" placeholder="..." required>
+                    <label for="freqnum2">days.</label>
+                    <br>
+                </div>
+
                 <div class="submit-button-container">
                     <input type="submit" value="submit">
                 </div>
@@ -260,7 +340,7 @@
     var addButton = document.getElementById('addDetailButton');
     var inputContainer = document.getElementById('inputContainerDetail');
     var detailDropdown = document.getElementById('detailDropdown');
-    var messageBox = document.getElementById('messageBox'); // Add an element to show messages
+    var messageBox = document.getElementById('messageBox'); 
     //
     var contactForm = document.getElementById('contactForm')
     const nameInput = document.getElementById("contact name");
@@ -276,10 +356,9 @@
         inputs.forEach(input => {
                 
             info = input.id
-            responseDict[info] = input.value; // Store user-input value
+            responseDict[info] = input.value; 
         });
             
-        // Send data to server using fetch API
         fetch('/addChip', {
             method: 'POST',
             headers: {
@@ -291,7 +370,7 @@
             if (response.ok) {
                 window.location.href = '/chipviewer';
             } else {
-                // Handle error
+                // handle error
                 console.error('Error sending data');
             }
         })
@@ -304,20 +383,19 @@
         event.preventDefault();
         var selectedOption = detailDropdown.options[detailDropdown.selectedIndex].text;
 
-        // Check if the detail has already been added
         if (!addedDetails[selectedOption]) {
             addedDetails[selectedOption] = true;
 
-            // Create a new input element with the same style as .input-box input
+            // makes a new input element with the same style as .input-box input
             var newInput = document.createElement('input');
             newInput.id = selectedOption;
-            newInput.className = 'dynamic-input'; // Apply the same styles
+            newInput.className = 'dynamic-input'; 
             newInput.type = 'text';
             newInput.placeholder = 'enter ' + selectedOption;
             
             inputContainer.appendChild(newInput);
         } else {
-            alert("Please create only one detail for each type of element."); // Or update message in the messageBox
+            alert("Please create only one detail for each type of element."); 
         }
     };
 </script>
