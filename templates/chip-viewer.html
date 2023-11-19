@@ -53,15 +53,15 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .contact:hover {
-            transform: scale(1.03); /* Enlarge the card on hover */
+            transform: scale(1.03); 
             box-shadow: 0 12px 20px rgba(103, 103, 103, 0.5), 0 0 40px rgba(67, 67, 67, 0.3), 0 0 80px rgba(193, 193, 193, 0.412); 
         }
         .contact p {
             margin: 8px 0;
-            color: #800000; /* Maroon color for contact details */
+            color: #800000; 
         }
         .contact strong {
-            color: #800000; /* Maroon color for contact names */
+            color: #800000; 
         }
 
         .button-link {
@@ -80,7 +80,7 @@
         }
 
 .button-link:hover {
-    background-color: #611c1b; /* Change background color on hover */
+    background-color: #611c1b;
 }
     </style>
 </head>
@@ -92,7 +92,7 @@
         </div>
     </a>
 
-    <form id="contactForm" action="#"> 
+    <form id="contactForm"> 
         <div class="container">
             <h2>contact list</h2>
 
@@ -100,11 +100,13 @@
     
             <div class="row">
                 {% for contact in contacts %}
-                    <div class="col-md-4">
+                    <div class="myClass">
                         <div class="contact">
                             <p><strong>{{ contact.name }}</strong></p>
                             <p><span>Type:</span> {{ contact.type }}</p>
-                            <p><span>Email:</span> {{ contact.email }}</p>
+                            {% if contact.email %}<p><span>Email:</span> {{ contact.email }} </p>{% endif %}
+                            {% if contact.phone_number %}<p><span>Phone:</span> {{ contact.phone_number }} </p>{% endif %}
+                            {% if contact.social_media %}<p><span>Social:</span> {{ contact.social_media }} </p>{% endif %}
                         </div>
                     </div>
                 {% endfor %}
