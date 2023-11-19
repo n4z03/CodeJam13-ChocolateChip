@@ -1,4 +1,5 @@
-class User:
+from ..app import *
+class User(db.Model):
     def __init__(self, username, email, password):
         self.cookies = []
         self.username = username
@@ -10,4 +11,3 @@ class User:
 
     def __str__(self):
         return f"User(username={self.username}, email={self.email})"
-

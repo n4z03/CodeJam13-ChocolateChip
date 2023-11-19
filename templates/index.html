@@ -1,80 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Chocolate Chip</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    body {
-        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #f6dcc2;
-        background-color: #611c1b;
-        margin: 0;
-        padding: 0;
-    }
 
-    .logo {
-        width: 7%;
-        height: auto;
-        float: left;
-        padding-right: 30px;
-    }
-  
-    .title {
-        color: #f4ba80;
-        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 13px;
-        float: left;
-    }
-
-    .header {
-        padding-top: 20px;
-        padding-left: 20px;
-        padding-right: 20px;
-        align-items: center;
-        justify-content: center;
-    }
-
-    h1 {
-        margin: 0;
-        padding: 0;
-        white-space: nowrap;
-    }
-
-
-    .button-2 {
-        background-color: #f4ba80;
-        border-radius: 10px;
-        border-width: 0;
-        color: #611c1b;
-        cursor: pointer;
-        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 20px;
-        padding: 10px 12px;
-    }
-
-    .clear {
-        clear: both;
-    }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <a href="index.html">
-            <img src="https://media.discordapp.net/attachments/1175292590569038017/1175292622017937458/Untitled_Artwork_6.png?ex=656ab38c&is=65583e8c&hm=7648eacf823ee66668b7060aaaebe15eed1f2d49070d5327ae403262055126e5&=&width=1010&height=1046" alt="Chocolate Chip Logo" class="logo">
-        </a>
-        <div class="title">
-            <h1><b>Chocolate Chip</b></h1>
-        </div>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chocolate Chip</title>
+       
     
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+            
+            body {
+                font-family: 'Poppins', sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+    
+            
+            body {
+                background: linear-gradient(rgba(153, 101, 49, 0.676) 0%, #ef9d4c61 40%);
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
+    
+            header {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;            
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                z-index: 100;
+                
+            }
 
-    <div style="display: flex; justify-content: center;">
-        <a href="signup.html">
-            <button class="button-2" role="button">Get started</button>
-        </a>
-    </div>
-</body>
-</html>
+            .chocolate-chip {
+              color: #fff;
+              font-size:2em;
+              cursor:default;
+              margin-left: 30 px;
+              padding: 20px;
+              
+            }
+
+            .navigation {
+            margin-right: 30px; 
+        }
+
+
+            .navigation a {
+              
+              color: #fff;
+              font-weight: 600;
+              text-decoration: none;
+              margin-left: 20px;
+              padding: 6px 15px;
+              border-radius: 5px;
+              transition: .5s;
+
+
+            }
+
+            .navigation a:hover {
+              background: #72351a;
+            }
+
+            .parallex {
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+            }
+
+            #text {
+              position: absolute;
+              font-size: 5em;
+              color: #611c1b;
+              text-shadow: 2px 4px 5px #eeb57b;
+
+            }
+
+            .parallex {
+              top: 0;
+              left: 0;
+              width: 100%;
+              pointer-events: none;
+              text-align: center;
+              line-height: 0.9;
+
+            }
+
+            .overlay-text {
+              position: absolute;
+              top: 30%; 
+              left: 50%; 
+              transform: translate(-50%, -50%);
+              font-size: 1.5em;
+              color: #611c1b;
+              text-shadow: 1px 2px 2px #eeb57b;
+            }
+
+            .parallex img#bottom-cookie {
+               position: absolute; 
+                top: 0; 
+                left: 0; 
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                
+            }
+
+            .parallex img#cookie-left {
+                position: absolute; 
+                top: 0; 
+                left: 0;
+                transform: translateX(-40px);
+                
+            }
+
+            .parallex img#milk {
+                position: absolute; 
+                top: 0; 
+                left: 0;
+                transform: translateX(-80px);
+                
+            }
+
+
+
+            .parallex img#cookie-right {
+                position: absolute; 
+                top: 0; 
+                left: 0; 
+                transform: translateX(300px);
+
+            }
+
+            .parallex img#ice-cream {
+                position: absolute; 
+                top: 0; 
+                left: 0;
+                transform: translateX(350px);
+                
+            }
+
+
+            .sec {
+              position: absolute;
+              background: #eeb57b;
+              padding: 30px 100px;
+              text-align: center;
+
+            }
+
+            .sec h2{
+              font-size: 3em;
+              color: #611c1b;
+              text-align: center;
+              margin-bottom: 10px;
+              line-height: 0.97;
+            }
+
+            .sec p{
+              font-size: 1em;
+              color: #611c1b;
+              font-weight: 500;
+              text-align: justify;
+            }
+
+            .sec .signup-button {
+              padding: 12px 20px;
+              font-size: 1.2em;
+              border: none;
+              border-radius: 5px;
+              background-color: rgba(153, 101, 49, 0.676);
+              color: #fff;
+              cursor: pointer;
+              font-weight: 600;
+              text-decoration: none;
+              margin-left: 20px;
+              transition: background-color 0.3s ease;
+            }
+
+            .sec .signup-button:hover {
+              background-color: #611c1b;
+            }
+
+
+      
+
+            
+
+        
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            <h2 class="chocolate-chip">Chocolate Chip</h2>
+            <nav class="navigation">
+              <a href="#">Log in<span></span></a>
+            </nav>
+        </header>
+
+        <section class="parallex">
+          <h2 id="text">Sweeter<br>Connections</h2>
+          <div class="overlay-text">Scroll for</div>
+
+
+          <img src="https://media.discordapp.net/attachments/1175549192106672240/1175571622866993203/IMG_2618.png?ex=656bb763&is=65594263&hm=20763cbb07dff01558e235465518b2c1ade43809b7a06d4b6aa83ce83278e15f&=&width=975&height=580" id="bottom-cookie">
+          <img src="https://media.discordapp.net/attachments/1175549192106672240/1175571627308752927/IMG_2618.png?ex=656bb765&is=65594265&hm=d496f934a6401547e61f3233c1bc990cfa1565010154a829762d6425f8efc0b7&=&width=975&height=580" id="milk"> 
+          <img src="https://media.discordapp.net/attachments/1175549192106672240/1175571625467457566/IMG_2618.png?ex=656bb764&is=65594264&hm=a5602b57523a6a1f4f5e1332de87beaa2aef997c401f6783de89ae37b6a9eeb3&=&width=975&height=580" id="ice-cream"> 
+          <img src="https://media.discordapp.net/attachments/1175549192106672240/1175571631331090534/IMG_2618.png?ex=656bb765&is=65594265&hm=69416b1c0348dac65e405c264e8d87457938b0de619c16cba2d2583111aa2782&=&width=975&height=580" id="cookie-left">
+          <img src="https://media.discordapp.net/attachments/1175549192106672240/1175571629363970148/IMG_2618.png?ex=656bb765&is=65594265&hm=29baa456e06ed4c472592469719dd8fad84545ef514faa91befc44335e8d49b9&=&width=975&height=580" id="cookie-right">
+          
+
+        </section>
+
+        <section class="sec" >
+          <h2>Use Chocolate Chip to stay on top of all your Connections!</h2>
+          <p>
+
+            Chocolate Chip designed to help you stay connected with your contacts effortlessly. Our platform allows you to store vital information about your contacts, including their names, important dates, and any personalized details you wish to add. Using this information, the website sends personalized notifications at scheduled intervals, reminding you to reach out and check up on your contacts.
+            <br>
+            <br>
+            Through customizable reminders, you can set specific dates or recurring intervals to ensure you never miss an opportunity to connect!
+            
+
+          </p>
+          <button class="signup-button">Sign Up Now</button>
+
+
+        </section>
+    
+        <script>
+          let text = document.getElementById('text');
+          let cookieLeft = document.getElementById('cookie-left');
+          let cookieRight = document.getElementById('cookie-right');
+          let iceCream = document.getElementById('ice-cream');
+          let milk = document.getElementById('milk');
+          
+          
+          window.addEventListener('scroll', () => {
+            let value = window.scrollY;
+
+            text.style.marginTop = value * 2.5 + 'px' ;
+            cookieLeft.style.left = value * -1.5 + 'px' ;
+            cookieRight.style.left = value * 1.5 + 'px' ;
+            iceCream.style.left = value * 1.5 + 'px' ;
+            milk.style.left = value * -1.5 + 'px' ;
+
+          })
+
+
+
+
+        </script>
+        
+    </body>
+    </html>
+    
