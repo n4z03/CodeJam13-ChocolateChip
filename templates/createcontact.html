@@ -340,7 +340,7 @@
     var addButton = document.getElementById('addDetailButton');
     var inputContainer = document.getElementById('inputContainerDetail');
     var detailDropdown = document.getElementById('detailDropdown');
-    var messageBox = document.getElementById('messageBox'); // Add an element to show messages
+    var messageBox = document.getElementById('messageBox'); 
     //
     var contactForm = document.getElementById('contactForm')
     const nameInput = document.getElementById("contact name");
@@ -356,10 +356,9 @@
         inputs.forEach(input => {
                 
             info = input.id
-            responseDict[info] = input.value; // Store user-input value
+            responseDict[info] = input.value; 
         });
             
-        // Send data to server using fetch API
         fetch('/addChip', {
             method: 'POST',
             headers: {
@@ -371,7 +370,7 @@
             if (response.ok) {
                 window.location.href = '/chipviewer';
             } else {
-                // Handle error
+                // handle error
                 console.error('Error sending data');
             }
         })
@@ -384,20 +383,19 @@
         event.preventDefault();
         var selectedOption = detailDropdown.options[detailDropdown.selectedIndex].text;
 
-        // Check if the detail has already been added
         if (!addedDetails[selectedOption]) {
             addedDetails[selectedOption] = true;
 
-            // Create a new input element with the same style as .input-box input
+            // makes a new input element with the same style as .input-box input
             var newInput = document.createElement('input');
             newInput.id = selectedOption;
-            newInput.className = 'dynamic-input'; // Apply the same styles
+            newInput.className = 'dynamic-input'; 
             newInput.type = 'text';
             newInput.placeholder = 'enter ' + selectedOption;
             
             inputContainer.appendChild(newInput);
         } else {
-            alert("Please create only one detail for each type of element."); // Or update message in the messageBox
+            alert("Please create only one detail for each type of element."); 
         }
     };
 </script>
