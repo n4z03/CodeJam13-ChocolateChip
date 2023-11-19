@@ -130,10 +130,43 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
-}
+    }
 
-button:hover {
+    button:hover {
     background-color: #611c1b;
+    }
+
+    .detail-box {
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color:#902b29;
+        margin-bottom: 30px;
+    }
+
+    .detail-box select{
+        border-radius: 5px;
+        border:none;
+        background-color: #f7f3ef;
+        font-size: 16px;
+        padding: 10px 10px;
+        margin-top: 10px;
+        justify-content: center;
+        height: 40px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+    }
+
+    .dynamic-input {
+    height: 50px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: #f7f3ef;
+    border-radius: 6px;
+    padding: 0 15px;
+    margin: 10px 0;
 }
 
 
@@ -161,14 +194,45 @@ button:hover {
                     </select>
                 </div>
     
-        
-                <button type="button" id="addDetailButton">Add a new detail</button>
-        
+                <div class="detail-box">
+                    <label for="addDetailCaption">add details (optional)</label><br>
+                    <select id="detailDropdown">
+                    <option value="option1">phone number</option>
+                    <option value="option2">email</option>
+                    <option value="option3">social media</option>
+                    <option value="option2">other</option>
+                    <!-- Add more options as needed -->
+                    </select>
+            
+                    <button id="addDetailButton" onclick="">add new detail</button>
+                    <div id="inputContainerDetail"></div>
+                </div>
+                
                 <div class="submit-button-container">
                     <input type="submit" value="Submit">
                 </div>
             </form>
         </div>
-        <script src="main.js"></script>
+        <script>
+            // Select the button and the container
+            var addButton = document.getElementById('addDetailButton');
+            var inputContainer = document.getElementById('inputContainerDetail');
+            var detailDropdown = document.getElementById('detailDropdown');
+
+            
+            addButton.onclick = function() {
+                event.preventDefault();
+                // Get the selected option from the dropdown
+                var selectedOption = detailDropdown.options[detailDropdown.selectedIndex].text;
+
+                // Create a new input element
+                var newInput = document.createElement('input');
+                newInput.type = 'text';
+                newInput.placeholder = 'Enter ' + selectedOption; // Set placeholder to "Enter [selected option]"
+
+                // Add the new input to the container
+                inputContainer.appendChild(newInput);
+            };
+        </script>
     </body>
 </html>
