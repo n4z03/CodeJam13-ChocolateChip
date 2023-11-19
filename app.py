@@ -14,10 +14,20 @@ class User(db.Model):
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user = db.Column(db.String(100))
     name = db.Column(db.String(100))
     type = db.Column(db.String(100))
     email = db.Column(db.String(100))
-    
+    date = db.Column(db.String(100))
+    frequency = db.Column(db.String(100))
+    def __init__(self, user_email, name, type, email, date, frequency):
+        self.user_email = user_email
+        self.name = name
+        self.type = type
+        self.email = email
+        self.date = date
+        self.frequency = frequency
+
 with app.app_context():
     # Home route
     @app.route('/')
@@ -104,9 +114,11 @@ with app.app_context():
             name = request.form['name']
             type = request.form['type']
             email = request.form['email']
+            date = request.form['date']
+            frequency = request.form['frequency']
             
             # Create a contact with the user info and add to database
-            contact = Contact(name = name, type = type, email = email)
+            contact = Contact(user_email, name, type, email, email, frequency)
             db.session.add(contact)
             db.session.commit()
         
