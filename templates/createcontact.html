@@ -58,22 +58,22 @@
       color: #902b29;
     }
 
-    /* For medium screens */
+   
 @media screen and (max-width: 768px) {
     .title {
-        font-size: 20px; /* Smaller font size for medium screens */
+        font-size: 20px; 
     }
 }
 
-/* For small screens */
+
 @media screen and (max-width: 480px) {
     .title {
-        font-size: 20px; /* Even smaller font size for small screens */
+        font-size: 20px;
     }
 }
 
 
-    /* enter contact name box */
+  
     .input-box {
       height: 50px;
       width: 100%;
@@ -86,7 +86,7 @@
         margin-bottom: 60px;
     }
 
-    /* enter contact name box */
+   
     .input-box input,
     .input-box textarea {
         margin-top: 10px;
@@ -111,12 +111,12 @@
         width: 80px;
         align-items: center;
         justify-content: center;
-        background-color: #902b29; /* Button background color */
+        background-color: #902b29; 
         color:#f7f3ef;
-        border: none; /* Remove border */
-        padding: 6px 10px; /* Padding around the text */
-        border-radius: 5px; /* Rounded corners */
-        font-size: 16px; /* Font size */
+        border: none; 
+        padding: 6px 10px; 
+        border-radius: 5px; 
+        font-size: 16px; 
         font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;;
         font-weight: bold;
         cursor: url('https://cdn.discordapp.com/attachments/1175292590569038017/1175753044688908308/Untitled_Artwork_2.png?ex=656c605a&is=6559eb5a&hm=783a21942d6f9c31145b42341b4970f04269e24d78b053d3d9cf9125f44c5921&'), auto;
@@ -125,11 +125,11 @@
     }
 
     input[type="submit"]:hover {
-        background-color: #611c1b; /* Darker shade for hover effect */
+        background-color: #611c1b; 
     }
 
     
-    /* type of contact and below */
+  
     .contact-box{
         font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 20px;
@@ -137,7 +137,7 @@
         color:#902b29;
         margin-top: 20px;
     }
-    /* personal or professional drop down */
+   
     .contact-box select{
         border-radius: 5px;
         border:none;
@@ -149,7 +149,6 @@
         height: 50px;
     }
 
-    /* all buttons formatting */
     button {
     background-color: #902b29;
     color: #f7f3ef;
@@ -166,7 +165,7 @@
     background-color: #611c1b;
     }
 
-    /* add details optional */
+    
     .detail-box {
         font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 20px;
@@ -175,7 +174,7 @@
         margin-top: 30px;
     }
 
-    /* add details dropdown */
+    
     .detail-box select{
         border-radius: 5px;
         border:none;
@@ -189,7 +188,7 @@
         margin-right: 20px;
     }
 
-    /* add details text box */
+ 
     .dynamic-input {
     height: 50px;
     width: 100%;
@@ -270,34 +269,35 @@
     contactForm.addEventListener('submit', function(event) {
         event.preventDefault()
         
-        
+        responseDict["name"] = nameInput.value
+        responseDict["type"] = typeInput.value
         const inputs = document.querySelectorAll("#inputContainerDetail input");
-            responseDict["name"] = nameInput.value
-            responseDict["type"] = typeInput.value
-            inputs.forEach(input => {
-                const info = detailDropdown.options[detailDropdown.selectedIndex].text
-                responseDict[info] = input.value; // Store user-input value
-            });
             
-            // Send data to server using fetch API
-            fetch('/addChip', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ data: responseDict }),
-            })
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = '/chipviewer';
-                } else {
-                    // Handle error
-                    console.error('Error sending data');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+        inputs.forEach(input => {
+                
+            info = input.id
+            responseDict[info] = input.value; // Store user-input value
+        });
+            
+        // Send data to server using fetch API
+        fetch('/addChip', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ data: responseDict }),
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = '/chipviewer';
+            } else {
+                // Handle error
+                console.error('Error sending data');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     })
     //
     addButton.onclick = function(event) {
