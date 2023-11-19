@@ -1,12 +1,10 @@
 from datetime import datetime, timedelta
 
 class Notification:
-    def __init__(self, ):
+    def __init__(self, contact):
         self.date = datetime.strptime(date, '%Y-%m-%d')
-        self.user = user_object
-        self.cookie_object = cookie_object
+        self.contact = contact
         
-
     def __repr__(self):
         return f"Notification:({self.date.strftime('%Y-%m-%d')}, to {self.chip_object.name})"
 

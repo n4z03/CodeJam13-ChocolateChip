@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
-from src.NotificationQueue import NotificationQueue
-from src.Notification import Notification
+from src.NotificationQueue import NotificationQueue, Notification
 
 app = Flask(__name__)
 
@@ -20,14 +19,18 @@ class Contact(db.Model):
     user = db.Column(db.String(100))
     name = db.Column(db.String(100))
     type = db.Column(db.String(100))
+    phone_number = db.Column(db.String(100))
     email = db.Column(db.String(100))
+    social_media = db.Column(db.String(100))
     date = db.Column(db.String(100))
     frequency = db.Column(db.String(100))
-    def __init__(self, user_email = None, name = None, type = None, email = None, date = None, frequency = None):
+    def __init__(self, user_email = None, name = None, type = None, phone_number = None, email = None, social_media = None, date = None, frequency = None):
         self.user_email = user_email
         self.name = name
         self.type = type
+        self.phone_number = phone_number
         self.email = email
+        self.social_media = social_media
         self.date = date
         self.frequency = frequency
 
@@ -123,26 +126,17 @@ with app.app_context():
     @app.route('/addChip', methods=['POST'])
     def add_chip():
         if request.method == 'POST':
-            # Add user to database
-            data = request.json  # Get JSON data sent from client-side JavaScript
-            # Check if specific fields exist in the received data
-            if 'name' in data and data['name']:
-                name = data['name']
-            if 'type' in data and data['type']:
-                type = data['type']
-            if 'email' in data and data['emaiol']:
-                email = data['email']
-        
+            name = request.form['name']
+            type = request.form['type']
+            email = request.form['email']
+            # Process the keys and values as needed (e.g., store in database)
+            # Example: Printing keys and values
             contact = Contact(name = name, type = type, email = email)
             db.session.add(contact)
             db.session.commit()
         
         # Redirect to view contacts
         return redirect('chipviewer')
-     
-    @app.route('/chips')
-    def chips():
-        return render_template('chips.html')
     
     @app.route('/createcontact')
     def createchip():

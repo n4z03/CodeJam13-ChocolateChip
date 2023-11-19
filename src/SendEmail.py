@@ -1,31 +1,34 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from .. import apppy
+
 
 def update_email_html(contact):
-    fobj = open("templates/email-template.html", "r")
-    html_str = ""
-    for i in fobj:
-        html_str += i
-    html_tokenized = html_str.split("|")
-    for i in range(len(html_tokenized)):
-        if html_tokenized[i] == "UserName":
-            html_tokenized[i] = "Jam jam" #user session.name
-        elif html_tokenized[i] == "ChipName":
-            html_tokenized[i] = "bruh" #contact.name
-        elif html_tokenized[i] == "Type":
-            html_tokenized[i] = "ok" #contact.type
-        elif html_tokenized[i] == "Contact":
-            html_tokenized[i] = "nice" #contact
-    html_str = ""
-    for i in html_tokenized:
-        html_str += i
-    print(html_str)
-    fobj.close
-    fobj = open("templates/email-to-send.html", "w")
-    fobj.write(html_str)
-    fobj.close
+    from app import app
+    with app.app_context():
+        from flask import session
+        fobj = open("templates/email-template.html", "r")
+        html_str = ""
+        for i in fobj:
+            html_str += i
+        html_tokenized = html_str.split("|")
+        for i in range(len(html_tokenized)):
+            if html_tokenized[i] == "UserName":
+                html_tokenized[i] = session['name'] #user session.name
+            elif html_tokenized[i] == "ChipName":
+                html_tokenized[i] = contact.name #contact.name
+            elif html_tokenized[i] == "Type":
+                html_tokenized[i] = contact.type #contact.type
+            elif html_tokenized[i] == "Email":
+                html_tokenized[i] = contact.email #contact
+        html_str = ""
+        for i in html_tokenized:
+            html_str += i
+        print(html_str)
+        fobj.close
+        fobj = open("templates/email-to-send.html", "w")
+        fobj.write(html_str)
+        fobj.close
     
         
     
