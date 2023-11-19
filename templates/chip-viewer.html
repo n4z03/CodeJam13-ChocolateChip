@@ -51,6 +51,8 @@
             margin-bottom: 20px;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-height: 250px;
+
         }
         .contact:hover {
             transform: scale(1.03); 
@@ -96,7 +98,7 @@
         <div class="container">
             <h2>contact list</h2>
 
-            <a href="createcontact.html" class="button-link" id="create-new-contact">create new contact</a>
+            <a href="createcontact" class="button-link" id="create-new-contact">create new contact</a>
     
             <div class="row">
                 {% for contact in contacts %}
