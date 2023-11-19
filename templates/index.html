@@ -11,6 +11,10 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
     
+
+            html {
+              scroll-behavior: smooth;
+            }
             
             body {
                 font-family: 'Poppins', sans-serif;
@@ -100,6 +104,7 @@
 
             }
 
+
             .parallex {
               top: 0;
               left: 0;
@@ -109,6 +114,10 @@
               line-height: 0.9;
 
             }
+
+           
+
+        
 
             .overlay-text {
               position: absolute;
@@ -205,11 +214,21 @@
             .sec .signup-button:hover {
               background-color: #611c1b;
             }
+
+
+      
+
+            
+
+        
         </style>
     </head>
     
     <body>
         <header>
+            <h2 class="chocolate-chip">Chocolate Chip</h2> 
+            <nav class="navigation">
+              <a href="#">Log in<span></span></a>
             <img src="https://cdn.discordapp.com/attachments/1175292590569038017/1175292622017937458/Untitled_Artwork_6.png?ex=656ab38c&is=65583e8c&hm=7648eacf823ee66668b7060aaaebe15eed1f2d49070d5327ae403262055126e5&" alt="Logo" class="logo">
             <h2 class="chocolate-chip">chocolate chip</h2>
             <nav class="navigation">
@@ -218,8 +237,8 @@
         </header>
 
         <section class="parallex">
-          <h2 id="text">sweeter<br>connections</h2>
-          <div class="overlay-text">scroll for</div>
+          <h2 id="text">Sweeter<br>Connections</h2>
+          <div class="overlay-text">Scroll for</div>
 
 
           <img src="https://media.discordapp.net/attachments/1175549192106672240/1175571622866993203/IMG_2618.png?ex=656bb763&is=65594263&hm=20763cbb07dff01558e235465518b2c1ade43809b7a06d4b6aa83ce83278e15f&=&width=975&height=580" id="bottom-cookie">
@@ -232,16 +251,19 @@
         </section>
 
         <section class="sec" >
-          <h2>stay on top of all your connections</h2>
+          <h2>Use Chocolate Chip to stay on top of all your Connections!</h2>
           <p>
-            chocolate chip designed to help you stay connected with your contacts effortlessly. our platform allows you to store vital information about your contacts, including their names, important dates, and any personalized details you wish to add. Using this information, the website sends personalized notifications at scheduled intervals, reminding you to reach out and check up on your contacts.
-            <br>
-            <br>
 
-            through customizable reminders, you can set specific dates or recurring intervals to ensure you never miss an opportunity to connect!
+            Chocolate Chip is designed to help you stay connected with your contacts effortlessly. Our platform allows you to store vital information about your contacts, including their names, important dates, and any personalized details you wish to add. Using this information, the website sends personalized notifications at scheduled intervals, reminding you to reach out and check up on your contacts.
+            <br>
+            <br>
+            Through customizable reminders, you can set specific dates or recurring intervals to ensure you never miss an opportunity to connect!
+            
 
           </p>
-          <a href="signup"><button class="signup-button">sign up now</button></a>
+          <button class="signup-button">Sign Up Now</button>
+
+
         </section>
     
         <script>
@@ -260,6 +282,8 @@
             cookieRight.style.left = value * 1.5 + 'px' ;
             iceCream.style.left = value * 1.5 + 'px' ;
             milk.style.left = value * -1.5 + 'px' ;
+
+
 
           })
 
