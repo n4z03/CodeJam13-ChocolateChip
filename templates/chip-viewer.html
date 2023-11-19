@@ -100,11 +100,13 @@
     
             <div class="row">
                 {% for contact in contacts %}
-                    <div class="col-md-4">
+                    <div class="myClass">
                         <div class="contact">
                             <p><strong>{{ contact.name }}</strong></p>
                             <p><span>Type:</span> {{ contact.type }}</p>
-                            <p><span>Email:</span> {{ contact.email }}</p>
+                            {% if contact.email %}<p><span>Email:</span> {{ contact.email }} </p>{% endif %}
+                            {% if contact.phone_number %}<p><span>Phone:</span> {{ contact.phone_number }} </p>{% endif %}
+                            {% if contact.social_media %}<p><span>Phone:</span> {{ contact.social_media }} </p>{% endif %}
                         </div>
                     </div>
                 {% endfor %}
