@@ -1,9 +1,10 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from app import Contact
 
 
-def update_email_html(contact):
+def update_email_html(contact = Contact):
     from app import app
     with app.app_context():
         from flask import session

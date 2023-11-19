@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
-from src.NotificationQueue import NotificationQueue, Notification
+from src.NotificationQueue import NotificationQueue
+from src.Notification import DateIncrement
+from datetime import datetime
 import json
 app = Flask(__name__)
 
@@ -23,16 +25,33 @@ class Contact(db.Model):
     email = db.Column(db.String(100))
     social_media = db.Column(db.String(100))
     date = db.Column(db.String(100))
-    frequency = db.Column(db.String(100))
-    def __init__(self, user_email = None, name = None, type = None, phone_number = None, email = None, social_media = None, date = None, frequency = None):
+    c_day = db.Column(db.String(100))
+    c_month = db.Column(db.String(100))
+    c_year = db.Column(db.String(100))
+    f_day = db.Column(db.String(100))
+    f_week = db.Column(db.String(100))
+    f_month = db.Column(db.String(100))
+    f_year = db.Column(db.String(100))
+    def __init__(self, user_email = None, name = None, type = None, phone_number = None, email = None, social_media = None, c_day = None, c_month = None, c_year = None, f_day = None, f_week = None, f_month = None, f_year = None):
         self.user_email = user_email
         self.name = name
         self.type = type
         self.phone_number = phone_number
         self.email = email
         self.social_media = social_media
-        self.date = date
-        self.frequency = frequency
+        self.c_day = c_day
+        self.c_month = c_month
+        self.c_year = c_year
+        self.f_day = f_day
+        self.f_week = f_week
+        self.f_month = f_month
+        self.f_year = f_year
+
+    def get_date(self):
+        return datetime(int(self.c_year), int(self.c_month), int(self.c_day))
+
+    def __lt__(self, other):
+        return self.get_date() < other.get_date()
 
 with app.app_context():
     notification_queue = NotificationQueue()
