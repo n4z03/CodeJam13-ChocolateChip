@@ -270,34 +270,35 @@
     contactForm.addEventListener('submit', function(event) {
         event.preventDefault()
         
-        
+        responseDict["name"] = nameInput.value
+        responseDict["type"] = typeInput.value
         const inputs = document.querySelectorAll("#inputContainerDetail input");
-            responseDict["name"] = nameInput.value
-            responseDict["type"] = typeInput.value
-            inputs.forEach(input => {
-                const info = detailDropdown.options[detailDropdown.selectedIndex].text
-                responseDict[info] = input.value; // Store user-input value
-            });
             
-            // Send data to server using fetch API
-            fetch('/addChip', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ data: responseDict }),
-            })
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = '/chipviewer';
-                } else {
-                    // Handle error
-                    console.error('Error sending data');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+        inputs.forEach(input => {
+                
+            info = input.id
+            responseDict[info] = input.value; // Store user-input value
+        });
+            
+        // Send data to server using fetch API
+        fetch('/addChip', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ data: responseDict }),
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = '/chipviewer';
+            } else {
+                // Handle error
+                console.error('Error sending data');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     })
     //
     addButton.onclick = function(event) {
