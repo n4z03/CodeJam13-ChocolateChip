@@ -4,14 +4,15 @@
 <style>
     body {
         min-height: 100vh;
-        background: #902b29;
+        background: #611c1b;
         display: flex;
         flex-direction: column; 
         align-items: center;
         justify-content: flex-start;
         font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        margin: 20px;
-        color: #f6dcc2; 
+        color: #611c1b;
+        font-weight: bold;
+        margin: 20px 20px;
     }
     
     a {
@@ -26,7 +27,6 @@
     .header {
         display: flex;
         align-items: center;
-        padding: 10px;
     }
     
     .header img {
@@ -38,41 +38,94 @@
       font-weight: bold;
       color: hsl(30, 74%, 86%);
     }
+
+    .container {
+        margin-top: 50px;
+        width: 300px;
+        padding: 20px 40px 50px 40px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    button {
+        margin-bottom: 10px;
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #f7f3ef;
+        font-size: 16px;
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        display: block;
+    }
+    button {
+        background-color:rgb(216, 144, 105);
+        color: white;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #611c1b;
+    }
+
+    h2{
+        font-size: 30px;
+        font-weight: 600;
+    }
 </style>
 
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>login</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 
 
 <body>
-    <a href="user-dashboard.html">
+    <a href="chip-viewer.html">
         <div class="header">
             <img src="https://cdn.discordapp.com/attachments/1175292590569038017/1175292622017937458/Untitled_Artwork_6.png?ex=656ab38c&is=65583e8c&hm=7648eacf823ee66668b7060aaaebe15eed1f2d49070d5327ae403262055126e5&" alt="Logo">
             <span class="website-name">chocolate chip</span>
         </div>
     </a>
 
-    <div class="login-container">
+    <div class="container">
         <form id="loginForm" method = "POST" action = "/login">
-            <h2>Login</h2>
+            <h2>login</h2>
             <h3>{{error}}</h3>
             <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="username">username:</label>
+                <input type="text" id="username" name="username" placeholder="enter username" required>
             </div>
+            <br>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="email">email:</label>
+                <input type="email" id="email" name="email" placeholder="enter email" required>
             </div>
+            <br>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="password">password:</label>
+                <input type="password" id="password" name="password" placeholder="enter password" required>
             </div>
+            <br>
             <button type="submit">Login</button>
         </form>
     </div>
