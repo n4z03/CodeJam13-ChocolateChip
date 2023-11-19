@@ -37,8 +37,7 @@ class NotificationQueue:
 notification_queue = NotificationQueue()
 
 # Example: Adding notifications
-notification_queue.add_notification(Notification("2023-11-20", user_obj, cookie_obj, chip_obj))
-notification_queue.add_notification(Notification("2023-11-25", user_obj, cookie_obj, chip_obj))
+
 
 # Process notifications (this would be called periodically, e.g., every day)
 if __name__ == "__main__":
