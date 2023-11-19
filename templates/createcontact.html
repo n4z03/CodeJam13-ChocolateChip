@@ -201,7 +201,7 @@
 
         <div class="container">
             <div class="title">create a new <span class="colored-text">contact</span></div>
-            <form id="contactForm" action="#"> <!-- Correct ID added here -->
+            <form id="contactForm">
                 <div class="input-box">
                     <label for="name">name</label><br>
                     <input id="contact name" type="text" placeholder="enter contact name">
@@ -243,58 +243,47 @@
             'other': false
         };
 
+    let responseDict = {};
     var addButton = document.getElementById('addDetailButton');
     var inputContainer = document.getElementById('inputContainerDetail');
     var detailDropdown = document.getElementById('detailDropdown');
     var messageBox = document.getElementById('messageBox'); // Add an element to show messages
     //
     var contactForm = document.getElementById('contactForm')
-
+    const nameInput = document.getElementById("contact name");
+    const typeInput = document.getElementById("type");
+    
     contactForm.addEventListener('submit', function(event) {
         event.preventDefault()
-        var contactName = document.getElementById('contact name');
-        var type = document.getElementById('type')
-        var phoneNumber 
-        var email
-        var socialMedia
-        var other
-        if (addedDetails['phone number']) {
-            phoneNumber = document.getElementById('phone number').value;
-        } else {
-            phoneNumber = '';
-        }   
-
-        if (addedDetails['email']) {
-            email = document.getElementById('email').value;
-        } else {
-            email = '';
-        }   
-
-        if (addedDetails['social media']) {
-            socialMedia = document.getElementById('social media').value;
-        } else {
-            socialMedia = '';
-        }   
-
-        if (addedDetails['other']) {
-            other = document.getElementById('other').value;
-        } else {
-            other = '';
-        }   
-
-        var formData = new FormData();
-        formData.append('name', contactName);
-        formData.append('type', type);
-        formData.append('phone number', phoneNumber);
-        formData.append('email', email);
-        formData.append('social media', socialMedia);
-        formData.append('other', other);
-
-        fetch('/addChip', {
-            method: 'POST',
-            body: formData
-        })
-        window.location.href = 'chipviewer'
+        
+        
+        const inputs = document.querySelectorAll("#inputContainerDetail input");
+            responseDict["name"] = nameInput.value
+            responseDict["type"] = typeInput.value
+            inputs.forEach(input => {
+                const info = detailDropdown.options[detailDropdown.selectedIndex].text
+                responseDict[info] = input.value; // Store user-input value
+            });
+            
+            // Send data to server using fetch API
+            fetch('/addChip', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: responseDict }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/chipviewer';
+                } else {
+                    // Handle error
+                    console.error('Error sending data');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     })
     //
     addButton.onclick = function(event) {
