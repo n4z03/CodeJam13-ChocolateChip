@@ -215,7 +215,7 @@
 
         <div class="container">
             <div class="title">create a new <span class="colored-text">contact</span></div>
-            <form id="contactForm" action="#"> <!-- Correct ID added here -->
+            <form id="contactForm" action="#"> 
                 <div class="input-box">
                     <label for="name">name</label><br>
                     <input id="contact name" type="text" placeholder="enter contact name">
@@ -238,7 +238,7 @@
                         <option value="option2">other</option>
                     </select>
             
-                    <button id="addDetailButton" onclick="">add new detail</button>
+                    <button id="addDetailButton">add new detail</button>
                     <div id="inputContainerDetail" required></div>
 
                     <div id="messageBox"></div>
@@ -308,7 +308,7 @@
             method: 'POST',
             body: formData
         })
-        window.location.href = 'chipviewer'
+        window.location.href = 'chip-viewer.html'
     })
     //
     addButton.onclick = function(event) {

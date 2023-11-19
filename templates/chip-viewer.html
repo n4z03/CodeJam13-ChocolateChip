@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <head>
-    <title>Contact List</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>contact list</title>
     <style>
         body {
-            padding-top: 20px;
-            background-color: #724e2c;
+            min-height: 100vh;
+            background: #f6dcc2;
+            font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: bold;
+            margin: 20px 20px;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: flex-start;
         }
+
+        a {
+        text-decoration: none; 
+        color: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        background: #f6dcc2;
+    }
+    
+    .header img {
+        height: 45px;
+        margin-right: 10px;
+    }
+    .website-name {
+      font-size: 35px;
+      font-weight: bold;
+      color: #902b29;
+    }
+    
         h2 {
             text-align: center;
             margin-bottom: 30px;
-            color: #fff;
+            color: #902b29;
+            font-size: 35px;
         }
         .contact {
             background-color: #fff;
@@ -22,7 +54,7 @@
         }
         .contact:hover {
             transform: scale(1.03); /* Enlarge the card on hover */
-            box-shadow: 0 12px 20px rgba(255, 132, 0, 0.5), 0 0 40px rgba(255, 94, 0, 0.3), 0 0 80px rgba(255, 102, 0, 0.412); 
+            box-shadow: 0 12px 20px rgba(103, 103, 103, 0.5), 0 0 40px rgba(67, 67, 67, 0.3), 0 0 80px rgba(193, 193, 193, 0.412); 
         }
         .contact p {
             margin: 8px 0;
@@ -31,23 +63,54 @@
         .contact strong {
             color: #800000; /* Maroon color for contact names */
         }
+
+        .button-link {
+        width: 200px;
+        display: inline-block;
+        text-decoration: none; 
+        color: #f7f3ef; 
+        background-color: #902b29; 
+        padding: 10px 15px; 
+        border-radius: 5px; 
+        font-size: 20px; 
+        font-weight: bold; 
+        cursor: pointer; 
+        transition: background-color 0.3s;
+        text-align: center; 
+        }
+
+.button-link:hover {
+    background-color: #611c1b; /* Change background color on hover */
+}
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Contact List</h2>
-
-        <div class="row">
-            {% for contact in contacts %}
-                <div class="col-md-4">
-                    <div class="contact">
-                        <p><strong>{{ contact.name }}</strong></p>
-                        <p><span>Type:</span> {{ contact.type }}</p>
-                        <p><span>Email:</span> {{ contact.email }}</p>
-                    </div>
-                </div>
-            {% endfor %}
+    <a href="index.html">
+        <div class="header">
+            <img src="https://cdn.discordapp.com/attachments/1175292590569038017/1175515806122123427/Untitled_Artwork_7.png?ex=656b8368&is=65590e68&hm=ab22f752e66063dbeecbcf3c30106b1738c70b7f9f2a2c172bd5d6c12bea70c2&" alt="Logo"> <!-- Update with your logo path -->
+            <span class="website-name">chocolate chip</span>
         </div>
-    </div>
+    </a>
+
+    <form id="contactForm" action="#"> 
+        <div class="container">
+            <h2>contact list</h2>
+
+            <a href="createcontact.html" class="button-link" id="create-new-contact">create new contact</a>
+    
+            <div class="row">
+                {% for contact in contacts %}
+                    <div class="col-md-4">
+                        <div class="contact">
+                            <p><strong>{{ contact.name }}</strong></p>
+                            <p><span>Type:</span> {{ contact.type }}</p>
+                            <p><span>Email:</span> {{ contact.email }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    
+    </form>
 </body>
 </html>
