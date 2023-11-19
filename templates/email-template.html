@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffb163; 
+            color: #4A1717; 
+        }
+
+        header {
+            background-color: #902b29; 
+            color: #FFFFFF; 
+            padding: 10px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+        }
+        
+        span.chipname, span.type, span.contact, span.email{
+            font-style: italic;
+            color: #8C4949; 
+        }
+    </style>
+</head>
 <body>
     <header>
-        Hello |UserName|
+        Hello <span class="username">|UserName|</span>
     </header>
     <div class="content">
-        Here is your reminder to reach out to |ChipName| <br>
-        Connection type: |Type| <br>
-        Contact: |Contact| <br>
+        Here is your reminder to reach out to <span class="chipname">|ChipName|</span> <br>
+        Connection type: <span class="type">|Type|</span> <br>
+        Email: <span class="email">|Email|</span> <br>
     </div>
 </body>
 </html>
