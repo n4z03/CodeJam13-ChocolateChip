@@ -37,7 +37,7 @@
         margin-right: 10px;
     }
     .website-name {
-      font-size: 24px;
+      font-size: 35px;
       font-weight: bold;
       color: #902b29;
     }
@@ -50,13 +50,27 @@
       box-shadow: 0 2px 4px rgba(99, 72, 69, 0.2);
     }
     .title {
-      font-size: 30px;
+      font-size: 2vw;
       font-weight: 600;
       color: rgb(216, 144, 105);
     }
     .colored-text {
       color: #902b29;
     }
+
+    /* For medium screens */
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 20px; /* Smaller font size for medium screens */
+    }
+}
+
+/* For small screens */
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 20px; /* Even smaller font size for small screens */
+    }
+}
 
 
     /* enter contact name box */
