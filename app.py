@@ -18,14 +18,18 @@ class Contact(db.Model):
     user = db.Column(db.String(100))
     name = db.Column(db.String(100))
     type = db.Column(db.String(100))
+    phone_number = db.Column(db.String(100))
     email = db.Column(db.String(100))
+    social_media = db.Column(db.String(100))
     date = db.Column(db.String(100))
     frequency = db.Column(db.String(100))
-    def __init__(self, user_email = None, name = None, type = None, email = None, date = None, frequency = None):
+    def __init__(self, user_email = None, name = None, type = None, phone_number = None, email = None, social_media = None, date = None, frequency = None):
         self.user_email = user_email
         self.name = name
         self.type = type
+        self.phone_number = phone_number
         self.email = email
+        self.social_media = social_media
         self.date = date
         self.frequency = frequency
 
@@ -115,10 +119,15 @@ with app.app_context():
         if request.method == 'POST':
             name = request.form['name']
             type = request.form['type']
+            phone_number = request.form['phone number']
             email = request.form['email']
+            social_media = request.form["social media"]
+            print(phone_number)
+            print(email, social_media)
+            
             # Process the keys and values as needed (e.g., store in database)
             # Example: Printing keys and values
-            contact = Contact(name = name, type = type, email = email)
+            contact = Contact(em, name, type, phone_number, email, social_media)
             db.session.add(contact)
             db.session.commit()
         
