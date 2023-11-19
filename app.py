@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
+from src.NotificationQueue import NotificationQueue
+from src.Notification import Notification
 
 app = Flask(__name__)
 
@@ -18,18 +20,23 @@ class Contact(db.Model):
     user = db.Column(db.String(100))
     name = db.Column(db.String(100))
     type = db.Column(db.String(100))
+    phone_number = db.Column(db.String(100))
     email = db.Column(db.String(100))
+    social_media = db.Column(db.String(100))
     date = db.Column(db.String(100))
     frequency = db.Column(db.String(100))
-    def __init__(self, user_email = None, name = None, type = None, email = None, date = None, frequency = None):
+    def __init__(self, user_email = None, name = None, type = None, phone_number = None, email = None, social_media = None, date = None, frequency = None):
         self.user_email = user_email
         self.name = name
         self.type = type
+        self.phone_number = phone_number
         self.email = email
+        self.social_media = social_media
         self.date = date
         self.frequency = frequency
 
 with app.app_context():
+    notification_queue = NotificationQueue()
     # Home route
     @app.route('/')
     def index():
@@ -50,7 +57,6 @@ with app.app_context():
         # Check if the user is in the database already
         user = User.query.filter_by(name=name).first()
         if not user:
-        # Add user to database
             new_user = User(name=name, password=password, email=email)
             db.session.add(new_user)
             db.session.commit()
@@ -106,8 +112,16 @@ with app.app_context():
     def chipviewer():
         if session.get('logged_in'):
             contacts = Contact.query.all()
+            for contact in contacts:
+                notification = Notification(contact)
+
+                if not notification_queue.exists(notification):
+                    notification_queue.add_notification(notification)
+
             return render_template("chip-viewer.html", contacts = contacts)
+        
         else:
+
             return "Access Denied"
   
     @app.route('/addChip', methods=['POST'])
