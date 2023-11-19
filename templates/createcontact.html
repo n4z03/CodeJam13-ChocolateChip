@@ -37,7 +37,7 @@
         margin-right: 10px;
     }
     .website-name {
-      font-size: 24px;
+      font-size: 35px;
       font-weight: bold;
       color: #902b29;
     }
@@ -50,13 +50,27 @@
       box-shadow: 0 2px 4px rgba(99, 72, 69, 0.2);
     }
     .title {
-      font-size: 30px;
+      font-size: 2vw;
       font-weight: 600;
       color: rgb(216, 144, 105);
     }
     .colored-text {
       color: #902b29;
     }
+
+    /* For medium screens */
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 20px; /* Smaller font size for medium screens */
+    }
+}
+
+/* For small screens */
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 20px; /* Even smaller font size for small screens */
+    }
+}
 
 
     /* enter contact name box */
@@ -105,7 +119,7 @@
         font-size: 16px; /* Font size */
         font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;;
         font-weight: bold;
-        cursor: pointer; 
+        cursor: url('https://cdn.discordapp.com/attachments/1175292590569038017/1175753044688908308/Untitled_Artwork_2.png?ex=656c605a&is=6559eb5a&hm=783a21942d6f9c31145b42341b4970f04269e24d78b053d3d9cf9125f44c5921&'), auto;
         transition: background-color 0.5s; 
         margin: 20px 10px;
     }
@@ -144,8 +158,8 @@
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
-    cursor: pointer;
     transition: background-color 0.3s;
+    cursor: url('https://cdn.discordapp.com/attachments/1175292590569038017/1175753044688908308/Untitled_Artwork_2.png?ex=656c605a&is=6559eb5a&hm=783a21942d6f9c31145b42341b4970f04269e24d78b053d3d9cf9125f44c5921&'), auto;
     }
 
     button:hover {
@@ -224,7 +238,7 @@
                         <option value="option2">other</option>
                     </select>
             
-                    <button id="addDetailButton" onclick="">add new detail</button>
+                    <button id="addDetailButton">add new detail</button>
                     <div id="inputContainerDetail" required></div>
 
                     <div id="messageBox"></div>
