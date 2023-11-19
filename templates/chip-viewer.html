@@ -92,7 +92,7 @@
         </div>
     </a>
 
-    <form id="contactForm" action="#"> 
+    <form id="contactForm"> 
         <div class="container">
             <h2>contact list</h2>
 
@@ -106,7 +106,7 @@
                             <p><span>Type:</span> {{ contact.type }}</p>
                             {% if contact.email %}<p><span>Email:</span> {{ contact.email }} </p>{% endif %}
                             {% if contact.phone_number %}<p><span>Phone:</span> {{ contact.phone_number }} </p>{% endif %}
-                            {% if contact.social_media %}<p><span>Phone:</span> {{ contact.social_media }} </p>{% endif %}
+                            {% if contact.social_media %}<p><span>Social:</span> {{ contact.social_media }} </p>{% endif %}
                         </div>
                     </div>
                 {% endfor %}
