@@ -49,7 +49,7 @@ def send_email(target_email):
     message['Bcc'] = FROM_EMAIL
 
     html = ""
-    with open("C:/Users/llimge/Documents/Mcgill Classes/CJAM 2023/CodeJam13/templates/email.html", "r") as file:
+    with open("templates/email-template.html", "r") as file:
         html = file.read()
 
     html_part = MIMEText(html, 'html')
@@ -70,12 +70,8 @@ def send_email(target_email):
     smtp.quit()
 
 if __name__ == "__main__":
-    update_email_html(1)
-    """
-    try:
-        send_email("marachljll@gmail.com")
-        logging.info("Function executed successfully.")
-    except Exception as e:
-        logging.error(f"Error during function execution: {e}")
-    """
+
+    send_email("marachljll@gmail.com")
+    send_email("luis.limgenco@mail.mcgill.com")
+    
     
