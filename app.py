@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
-from src.NotificationQueue import NotificationQueue
-from src.Notification import Notification
+from src.NotificationQueue import NotificationQueue, Notification
 
 app = Flask(__name__)
 
@@ -138,10 +137,6 @@ with app.app_context():
         
         # Redirect to view contacts
         return redirect('chipviewer')
-     
-    @app.route('/chips')
-    def chips():
-        return render_template('chips.html')
     
     @app.route('/createcontact')
     def createchip():
