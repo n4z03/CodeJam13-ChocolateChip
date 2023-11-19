@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
+from src.NotificationQueue import NotificationQueue
+from src.Notification import Notification
 
 app = Flask(__name__)
 
@@ -30,6 +32,7 @@ class Contact(db.Model):
         self.frequency = frequency
 
 with app.app_context():
+    notification_queue = NotificationQueue()
     # Home route
     @app.route('/')
     def index():
@@ -50,7 +53,6 @@ with app.app_context():
         # Check if the user is in the database already
         user = User.query.filter_by(name=name).first()
         if not user:
-        # Add user to database
             new_user = User(name=name, password=password, email=email)
             db.session.add(new_user)
             db.session.commit()
@@ -106,18 +108,31 @@ with app.app_context():
     def chipviewer():
         if session.get('logged_in'):
             contacts = Contact.query.all()
+            for contact in contacts:
+                notification = Notification(contact)
+
+                if not notification_queue.exists(notification):
+                    notification_queue.add_notification(notification)
+
             return render_template("chip-viewer.html", contacts = contacts)
+        
         else:
+
             return "Access Denied"
   
     @app.route('/addChip', methods=['POST'])
     def add_chip():
         if request.method == 'POST':
-            name = request.form['name']
-            type = request.form['type']
-            email = request.form['email']
-            # Process the keys and values as needed (e.g., store in database)
-            # Example: Printing keys and values
+            # Add user to database
+            data = request.json  # Get JSON data sent from client-side JavaScript
+            # Check if specific fields exist in the received data
+            if 'name' in data and data['name']:
+                name = data['name']
+            if 'type' in data and data['type']:
+                type = data['type']
+            if 'email' in data and data['emaiol']:
+                email = data['email']
+        
             contact = Contact(name = name, type = type, email = email)
             db.session.add(contact)
             db.session.commit()
