@@ -21,7 +21,7 @@ class Contact(db.Model):
     email = db.Column(db.String(100))
     date = db.Column(db.String(100))
     frequency = db.Column(db.String(100))
-    def __init__(self, user_email, name, type, email, date, frequency):
+    def __init__(self, user_email = None, name = None, type = None, email = None, date = None, frequency = None):
         self.user_email = user_email
         self.name = name
         self.type = type
