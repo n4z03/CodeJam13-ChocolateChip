@@ -131,9 +131,9 @@
 
         <div class="container">
             <div class="title">create a new <span class="colored-text">contact</span></div>
-                <form action="#">
+                <form method = "POST" action="/addChip">
                     <div class="input-box">
-                        <input type="text" placeholder="enter contact name">
+                        <input type="text" id = name name = name placeholder="enter contact name">
                     </div>
 
                     <div class="contact-box">
@@ -144,12 +144,10 @@
                         </select>
                     </div>
 
-
-                    <form action:"addContact">
-                        <div class="submit-button-container">
-                            <input type="submit" value="Submit">
-                        </div>
-                    </form>
+                    <div class="submit-button-container">
+                        <input type="submit" value="Submit">
+                    </div>
+                    
                 </form>
         </div>
     </body>
