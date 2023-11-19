@@ -8,7 +8,7 @@ import time
 from apscheduler.schedulers.background import BackgroundScheduler
 
 class NotificationQueue:
-    """
+    
     def __init__(self):
         self.heap = []
         self.existing = set()
@@ -48,7 +48,7 @@ class NotificationQueue:
         if notification in self.heap:
             notification.modify(new_date)
             heapq.heapify(self.heap)
-    """
+    
 
 
 def get_all_contacts():
