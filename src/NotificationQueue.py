@@ -3,15 +3,21 @@ import Notification
 import SendEmail
 from datetime import datetime
 
+existing = set()
+
 class NotificationQueue:
     def __init__(self):
         self.heap = []
-
+        
     def __init__(self, filepath):
         self.heap = []
-
+    
     def add_notification(self, notification = Notification):
         heapq.heappush(self.heap, notification)
+        existing.add(notification)
+
+    def exists(self, notification):
+        return notification in existing
 
     def process_notifications(self):
         current_date = datetime.now()
