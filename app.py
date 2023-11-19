@@ -21,7 +21,7 @@ class Contact(db.Model):
     email = db.Column(db.String(100))
     date = db.Column(db.String(100))
     frequency = db.Column(db.String(100))
-    def __init__(self, user_email, name, type, email, date, frequency):
+    def __init__(self, user_email = None, name = None, type = None, email = None, date = None, frequency = None):
         self.user_email = user_email
         self.name = name
         self.type = type
@@ -83,9 +83,7 @@ with app.app_context():
                 # Redirect to a success page or perform an action upon successful login
                 session['name'] = username
                 session['logged_in'] = True
-                session['email'] = email
-                contacts = Contact.query.all()
-                return render_template('chip-viewer.html', username = session['name'], contacts = contacts)
+                return render_template('chip-viewer.html', username = session['name'])
             else:
                 # Output an error message
                 error = "Invalid username or password. Please try again."
@@ -118,11 +116,9 @@ with app.app_context():
             name = request.form['name']
             type = request.form['type']
             email = request.form['email']
-            date = request.form['date']
-            frequency = request.form['frequency']
-            
-            # Create a contact with the user info and add to database
-            contact = Contact(user_email, name, type, email, email, frequency)
+            # Process the keys and values as needed (e.g., store in database)
+            # Example: Printing keys and values
+            contact = Contact(name = name, type = type, email = email)
             db.session.add(contact)
             db.session.commit()
         
