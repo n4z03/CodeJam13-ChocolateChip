@@ -15,12 +15,13 @@ class Notification:
         self.date = date
 
 class DateIncrement:
-    def __init__(self, days, weeks, months):
+    def __init__(self, days, weeks, months, years):
         self.days = days
         self.weeks = weeks
         self.months = months
+        self.years = years
     def increment(self, date = datetime):
-        days_increment = self.weeks * 7 + self.months * 30 + self.days
+        days_increment = self.years * 365 + self.months * 30 + self.weeks * 7 + self.days 
         date += timedelta(days = days_increment)
         return date
         

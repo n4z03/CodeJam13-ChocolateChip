@@ -112,9 +112,9 @@
                     <div class="contact">
                         <p><strong>{{ contact.name }}</strong></p>
                         <p><span>Type:</span> {{ contact.type }}</p>
-                        {% for key, value in contact.details.items() %}
-                        <p><span>{{ key|capitalize }}:</span> {{ value }}</p>
-                        {% endfor %}
+                        {% if contact.email %}<p><span>Email:</span> {{ contact.email }}</p>{% endif %}
+                        {% if contact.phone_number %}<p><span>Phone:</span> {{ contact.phone_number }}</p>{% endif %}
+                        {% if contact.social_media %}<p><span>Social:</span> {{ contact.social_media}}</p>{% endif %}
                     </div>
                 {% endfor %}
             </div>
