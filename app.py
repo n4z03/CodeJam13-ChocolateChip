@@ -11,6 +11,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True) # Initialize column in database for id
     name = db.Column(db.String(100)) # Initialize column in database for name
     password = db.Column(db.String(100)) # Initialize column in databasefor password
+    email = db.Column(db.String(100))
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -45,11 +46,12 @@ with app.app_context():
     def process():
         name = request.form['name']
         password = request.form['password']
+        email = request.form['email']
         # Check if the user is in the database already
         user = User.query.filter_by(name=name).first()
         if not user:
         # Add user to database
-            new_user = User(name=name, password=password)
+            new_user = User(name=name, password=password, email=email)
             db.session.add(new_user)
             db.session.commit()
 
