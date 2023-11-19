@@ -14,7 +14,7 @@
         align-items: center;
         justify-content: flex-start;
         font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        margin: 20px; 
+        margin: 20px 20px;
     }
     
     a {
@@ -29,7 +29,6 @@
     .header {
         display: flex;
         align-items: center;
-        padding: 10px;
         background: #f6dcc2;
     }
     
@@ -43,12 +42,12 @@
       color: #902b29;
     }
     .container {
-      width: 30%;
+      margin-top: 50px;
+      width: 25%;
       background: #fff;
-      border-radius: 6px;
-      padding: 20px 60px 20px 40px;
-      box-shadow: 0 5px 10px rgba(99, 72, 69, 0.2);
-      margin-top: 20px; /* space between the header and the container */
+      border-radius: 8px;
+      padding: 40px 70px 20px 40px;
+      box-shadow: 0 2px 4px rgba(99, 72, 69, 0.2);
     }
     .title {
       font-size: 30px;
@@ -64,12 +63,19 @@
     .input-box {
       height: 50px;
       width: 100%;
-      margin: 12px 0;
+      margin-top: 20px;
+      font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color:#902b29;
+        margin-top: 20px;
+        margin-bottom: 60px;
     }
 
     /* enter contact name box */
     .input-box input,
     .input-box textarea {
+        margin-top: 10px;
       height: 100%;
       width: 100%;
       border: none;
@@ -115,7 +121,7 @@
         font-size: 20px;
         font-weight: bold;
         color:#902b29;
-        margin-bottom: 30px;
+        margin-top: 20px;
     }
     /* personal or professional drop down */
     .contact-box select{
@@ -152,6 +158,7 @@
         font-size: 20px;
         font-weight: bold;
         color:#902b29;
+        margin-top: 30px;
     }
 
     /* add details dropdown */
@@ -164,7 +171,7 @@
         margin-top: 10px;
         justify-content: center;
         height: 40px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         margin-right: 20px;
     }
 
@@ -178,7 +185,9 @@
     background: #f7f3ef;
     border-radius: 6px;
     padding: 0 15px;
-    margin: 10px 0;
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-bottom: 13px;
 }
 
 
@@ -195,6 +204,7 @@
             <div class="title">create a new <span class="colored-text">contact</span></div>
             <form id="contactForm" action="#"> <!-- Correct ID added here -->
                 <div class="input-box">
+                    <label for="name">name</label><br>
                     <input type="text" placeholder="enter contact name">
                 </div>
         
