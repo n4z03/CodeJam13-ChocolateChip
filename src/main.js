@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function addDetailField() {
     const detailContainer = document.getElementById('additionalDetails');
 
-    // Create a dropdown for detail type
     const detailType = document.createElement('select');
     detailType.innerHTML = `<option value="">Select Detail</option>
                             <option value="phone">Phone Number</option>
@@ -18,14 +17,12 @@ function addDetailField() {
 }
 
 function handleDetailTypeChange(selectElement, container) {
-    // Remove any existing input field
     let nextElement = selectElement.nextSibling;
     while(nextElement) {
         container.removeChild(nextElement);
         nextElement = selectElement.nextSibling;
     }
 
-    // Add new input field based on selection
     if (selectElement.value === 'other') {
         createInputField('text', 'Specify Detail Type', container);
     }
@@ -43,7 +40,6 @@ function createInputField(type, placeholder, container) {
 function submitForm(event) {
     event.preventDefault();
 
-    // Collect data from form fields
     const formData = new FormData(event.target);
     const formObject = {};
     formData.forEach((value, key) => {
@@ -54,7 +50,6 @@ function submitForm(event) {
         }
     });
 
-    // Send data to backend
     fetch('/submit_form', {
         method: 'POST',
         headers: {
